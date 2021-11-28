@@ -6,15 +6,47 @@
     </div>
     <div class="login__content p-4 sm:p-8 flex flex-col justify-center bg-accent">
       <div class="login w-full max-w-xl rounded-md mx-auto border p-4 sm:p-8 xl:p-20">
-        <form>
+        <form [formGroup]="myForm">
           <h1 class="text-2xl font-bold">Sign up</h1>
           <div class="mb-4 mt-6">
-            <label class="block text-gray-700 text-sm font-semibold mb-2" for="email"> Username or Email </label>
+            <label class="block text-gray-700 text-sm font-semibold mb-2" for="firstName"> First Name </label>
+            <input
+              class="text-sm appearance-none rounded w-full py-2 px-3 text-gray-700 bg-gray-100 leading-tight focus:outline-none focus:shadow-outline h-10"
+              id="firstName"
+              formControlName="firstName"
+              type="text"
+              placeholder="First Name"
+            />
+          </div>
+          <div class="mb-4 mt-6">
+            <label class="block text-gray-700 text-sm font-semibold mb-2" for="lastName"> Last Name </label>
+            <input
+              class="text-sm appearance-none rounded w-full py-2 px-3 text-gray-700 bg-gray-100 leading-tight focus:outline-none focus:shadow-outline h-10"
+              id="lastName"
+              formControlName="lastName"
+              type="text"
+              placeholder="Last Name"
+            />
+          </div>
+
+          <div class="mb-4 mt-6">
+            <label class="block text-gray-700 text-sm font-semibold mb-2" for="email"> Email </label>
             <input
               class="text-sm appearance-none rounded w-full py-2 px-3 text-gray-700 bg-gray-100 leading-tight focus:outline-none focus:shadow-outline h-10"
               id="email"
+              formControlName="email"
               type="text"
-              placeholder="Email address"
+              placeholder="Email Adress"
+            />
+          </div>
+
+          <div class="mb-4 mt-6">
+            <label class="block text-gray-700 text-sm font-semibold mb-2" for="birthday"> Birthday </label>
+            <input
+              class="text-sm appearance-none rounded w-full py-2 px-3 text-gray-700 bg-gray-100 leading-tight focus:outline-none focus:shadow-outline h-10"
+              id="birthday"
+              formControlName="birthday"
+              type="date"
             />
           </div>
           <div class="mb-6 mt-6">
@@ -23,6 +55,7 @@
               class="text-sm bg-gray-100 appearance-none rounded w-full py-2 px-3 text-gray-700 mb-1 leading-tight focus:outline-none focus:shadow-outline h-10"
               id="password"
               type="password"
+              formControlName="password"
               placeholder="Password"
             />
           </div>
