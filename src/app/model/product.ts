@@ -1,8 +1,13 @@
+import { Category } from "./category";
+
 export class Product{
-  id: string;
+  id: number;
   title: string;
   price: number;
   description: string;
   picture: string;
+  createdAt : Date;
+  updatetAt : Date;
+  Category : Category;
   
 }

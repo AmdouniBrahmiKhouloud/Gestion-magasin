@@ -1,3 +1,5 @@
+import { Product } from "./product";
+
 export class Promotion{
   id: number;
   name: string;
