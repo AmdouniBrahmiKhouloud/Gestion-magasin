@@ -1,6 +1,8 @@
+import { User } from './user';
+
 export class Reclamation {
   id: Number;
   detail: string;
-  //sender:User;
+  sender: User;
   date: Date;
 }
