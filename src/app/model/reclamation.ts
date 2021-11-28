@@ -1,5 +1,5 @@
 export class Reclamation {
-  id: string;
+  id: Number;
   detail: string;
   //sender:User;
   date: Date;

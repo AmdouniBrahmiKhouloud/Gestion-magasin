@@ -1,5 +1,5 @@
 export class Fournisseur {
-  id: string;
+  id: Number;
   code: string;
   label: string;
 }
