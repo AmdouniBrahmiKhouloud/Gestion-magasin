@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DashboardAjoutFournisseurComponent } from './dashboard-ajout-fournisseur/dashboard-ajout-fournisseur.component';
 import { DashboardIndexComponent } from './dashboard-index/dashboard-index.component';
 import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component';
+import { DashboardListeFournisseurComponent } from './dashboard-liste-fournisseur/dashboard-liste-fournisseur.component';
 import { DashboardOrderComponent } from './dashboard-order/dashboard-order.component';
 import { DashboardProfileComponent } from './dashboard-profile/dashboard-profile.component';
 import { DashboardSavedItemComponent } from './dashboard-saved-item/dashboard-saved-item.component';
@@ -23,6 +25,14 @@ const DashboardChildrenRoute: Routes = [
   {
     path: 'orders',
     component: DashboardOrderComponent
+  },
+  {
+    path: 'ajout-fournisseur',
+    component: DashboardAjoutFournisseurComponent
+  },
+  {
+    path: 'liste-fournisseur',
+    component: DashboardListeFournisseurComponent
   }
 ];
 
