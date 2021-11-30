@@ -1,5 +1,5 @@
-import {User} from './user';
 import {Product} from './product';
+import {Facture} from './facture';
 export class DetailFacture {
   idDetailFacture: number ;
   qte: number ;
@@ -7,5 +7,5 @@ export class DetailFacture {
   pourcentageRemise: number ;
   montantRemise: number ;
   product: Product ;
-  user: User ;
+  facture: Facture ;
 }
