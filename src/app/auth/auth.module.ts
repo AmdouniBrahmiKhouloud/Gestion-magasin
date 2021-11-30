@@ -5,7 +5,8 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { SharedModule } from '../shared/shared.module';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     AuthRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    FormsModule,
+    MatFormFieldModule
   ]
 })
 export class AuthModule { }
