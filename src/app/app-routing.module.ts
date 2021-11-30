@@ -39,7 +39,8 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
-  }
+  },
+  { path: 'facture', loadChildren: () => import('./factures/factures.module').then(m => m.FacturesModule) }
 ];
 
 @NgModule({

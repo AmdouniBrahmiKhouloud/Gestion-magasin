@@ -1,5 +1,6 @@
 import {Product} from './product';
 import {Facture} from './facture';
+
 export class DetailFacture {
   idDetailFacture: number ;
   qte: number ;
