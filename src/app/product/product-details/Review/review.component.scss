@@ -1,0 +1,17 @@
+li:hover,
+li:hover ~ li {
+  color: orange;
+  cursor: pointer;
+}
+.selected {
+  color: orange;
+}
+
+ul {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  li {
+    font-size: 32px;
+  }
+}

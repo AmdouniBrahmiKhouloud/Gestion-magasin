@@ -1,0 +1,11 @@
+<ul>
+  <li
+    *ngFor="let star of stars"
+    [ngClass]="{ selected: star <= tempRating }"
+    (mouseover)="tempRating = 0"
+    (mouseout)="tempRating = rating"
+    (click)="openDialog(star)"
+  >
+    ★
+  </li>
+</ul>
