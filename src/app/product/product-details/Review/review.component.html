@@ -1,11 +1,14 @@
-<ul>
-  <li
-    *ngFor="let star of stars"
-    [ngClass]="{ selected: star <= tempRating }"
-    (mouseover)="tempRating = 0"
-    (mouseout)="tempRating = rating"
-    (click)="openDialog(star)"
-  >
-    ★
-  </li>
-</ul>
+<div class="flex justify-start items-end">
+  <ul>
+    <li
+      *ngFor="let star of stars"
+      [ngClass]="{ selected: star <= tempRating }"
+      (mouseover)="onHover(star)"
+      (mouseout)="onHoverEnd()"
+      (click)="openDialog(star)"
+    >
+      ★
+    </li>
+  </ul>
+  <p class="ml-6">Buyers {{ rateDescriptions }}</p>
+</div>

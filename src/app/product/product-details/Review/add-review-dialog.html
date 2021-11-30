@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>Review By user</h1>
+<div mat-dialog-content class="flex">
+  <div class="flex-1">
+    <img class="w-full" src="assets/images/products/details.jpg" alt="img not found" />
+    <h2 class="text-center mt-12">product name</h2>
+  </div>
+  <div class="flex-2 ml-24">
+    <p>Tell us what you think about this product. Would your recommend it , and why?</p>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Leave a comment</mat-label>
+      <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+    </mat-form-field>
+    <div class="flex justify-start items-end">
+      <ul>
+        <li
+          class="ml-4"
+          *ngFor="let star of data.stars"
+          [ngClass]="{ selected: star <= tempRating }"
+          (mouseover)="onStarHover(star)"
+          (mouseout)="onEndHover()"
+          (click)="onClick(star)"
+        >
+          ★
+        </li>
+      </ul>
+
+      <p class="ml-6">{{rateDescriptions}}</p>
+    </div>
+  </div>
+</div>
+<div class="flex justify-end">
+  <button class="mr-4" (click)="onCancelClick()" mat-button>Cancel</button>
+  <button mat-flat-button color="primary">Submit</button>
+</div>

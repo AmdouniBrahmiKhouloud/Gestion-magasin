@@ -8,20 +8,17 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductHeroComponent } from './product-list/product-hero/product-hero.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-import { DialogDataExampleDialog, ReviewComponent } from './product-details/Review/review.component';
+import { AddReviewDialog, ReviewComponent } from './product-details/Review/review.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  declarations: [
-    ProductListComponent,
-    ProductDetailsComponent,
-    ProductHeroComponent,
-    ReviewComponent,
-    DialogDataExampleDialog
-  ],
+  declarations: [ProductListComponent, ProductDetailsComponent, ProductHeroComponent, ReviewComponent, AddReviewDialog],
   imports: [
     MatDialogModule,
-
+    MatInputModule,
+    MatButtonModule,
     CommonModule,
     ProductRoutingModule,
     SharedModule,
