@@ -19,7 +19,8 @@ const baseLayoutRouting: Routes = [
     path: '',
     pathMatch: 'full',
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
-  }
+  },
+  { path: 'facture', loadChildren: () => import('./factures/factures.module').then(m => m.FacturesModule) }
 ];
 
 const routes: Routes = [
@@ -39,8 +40,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
-  },
-  { path: 'facture', loadChildren: () => import('./factures/factures.module').then(m => m.FacturesModule) }
+  }
 ];
 
 @NgModule({
