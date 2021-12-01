@@ -13,10 +13,16 @@ export class UserService {
   getAllClient(){
     return this.http.get<User[]>(this.url + '/retrieve-all-clients')
   }
-  getClientById(){}
-  updateClient(){}
+  getClientById(id: number){
+    return this.http.get<User>(this.url + '/retrieve-client/' +id )
+  }
+  updateClient(user: User){
+    return this.http.put(this.url +'/modify-client',user);
+  }
   addNewClient(user: User){
     return this.http.post(this.url + '/add-client', user);
   }
-  deleteClien(){}
+  deleteClien(id: number){
+    return this.http.delete(this.url +'/remove-client/' +id)
+  }
 }

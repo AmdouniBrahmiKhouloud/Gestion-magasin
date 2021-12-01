@@ -45,7 +45,7 @@ export class SignupComponent implements OnInit {
     this.user.profession= this.myForm.get('profession').value;
     this.user.categorieClient= "ordinaire";
     //console.log(this.user);
-    if(this.submitted){
+    if(this.submitted && this.myForm.valid){
       this.userService.addNewClient(this.user).subscribe();
       this.router.navigate(['/auth/login'])
     }
