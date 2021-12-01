@@ -1,6 +1,6 @@
 <div>
   <div class="filter flex items-center mb-5">
-    <h5>Favorite products</h5>
+    <h5>Liste Des Fournisseurs</h5>
     <div class="flex items-center ml-auto">
       <button [class.text-accent]="view === 'grid'" (click)="view = 'grid'" mat-icon-button class="view__btn">
         <mat-icon>grid_view</mat-icon>
@@ -44,9 +44,9 @@
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu" xposition="before">
-              <button mat-menu-item>
-                <mat-icon>dialpad</mat-icon>
-                <span>Details</span>
+              <button mat-menu-item (click)="update(product)">
+                <mat-icon>edit</mat-icon>
+                <span>Update</span>
               </button>
               <button mat-menu-item (click)="remove(product)">
                 <mat-icon>delete</mat-icon>

@@ -14,8 +14,11 @@ import { DashboardAjoutFournisseurComponent } from './dashboard-ajout-fournisseu
 import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardListeFournisseurComponent } from './dashboard-liste-fournisseur/dashboard-liste-fournisseur.component';
+import { UpdateDialogFournisseurComponent } from './dashboard-liste-fournisseur/update-dialog-fournisseur/update-dialog-fournisseur.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { DashboardListeFournisseurComponent } from './dashboard-liste-fournisseu
     DashboardProfileComponent,
     DashboardOrderComponent,
     DashboardAjoutFournisseurComponent,
-    DashboardListeFournisseurComponent
+    DashboardListeFournisseurComponent,
+    UpdateDialogFournisseurComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +40,10 @@ import { DashboardListeFournisseurComponent } from './dashboard-liste-fournisseu
     MatMenuModule,
     MatRippleModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatInputModule,
+    FormsModule
   ],
   exports: [
     CommonModule,
@@ -46,7 +53,9 @@ import { DashboardListeFournisseurComponent } from './dashboard-liste-fournisseu
     MatButtonModule,
     MatMenuModule,
     MatRippleModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatDialogModule,
+    MatInputModule
   ]
 })
 export class DashboardModule {}

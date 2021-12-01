@@ -11,6 +11,7 @@ import { FournisseurService } from 'src/app/services/fournisseur.service';
 export class DashboardAjoutFournisseurComponent implements OnInit {
   fournisseur = new Fournisseur();
   form: FormGroup;
+  alert = false;
 
   formfourni = this.builder.group({
     code: ['', Validators.required],
@@ -29,6 +30,7 @@ export class DashboardAjoutFournisseurComponent implements OnInit {
     this.fournisseur.numero = formfourni.value.numero;
     console.log(this.fournisseur);
     this.fournisseurService.addfournisseur(this.fournisseur).subscribe(data => {
+      this.alert = true;
       console.log('four added');
     });
   }

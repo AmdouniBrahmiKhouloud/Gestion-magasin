@@ -22,6 +22,7 @@ export class FournisseurService {
     return this.http.delete(this.url + 'remove-fournisseur/' + id);
   }
   updatefournisseur(fournisseur: Fournisseur) {
-    return this.http.put(this.url + fournisseur.idFournisseur, fournisseur);
+    console.log(fournisseur);
+    return this.http.put(this.url + 'updateFournisseur/' + fournisseur.idFournisseur, fournisseur);
   }
 }
