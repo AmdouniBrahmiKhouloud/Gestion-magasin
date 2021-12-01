@@ -1,5 +1,5 @@
-li:hover,
-li:hover ~ li {
+.starItem:hover,
+.starItem:hover ~ .starItem {
   color: orange;
   cursor: pointer;
 }
@@ -7,11 +7,11 @@ li:hover ~ li {
   color: orange;
 }
 
-ul {
+.starList {
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
-  li {
+  .starItem {
     font-size: 32px;
   }
 }
@@ -29,7 +29,7 @@ ul {
 .descriptionContainer {
   flex: 2;
 }
-.example-full-width {
+.textArea {
   margin: 20px 0px;
   width: 100%;
   textarea {

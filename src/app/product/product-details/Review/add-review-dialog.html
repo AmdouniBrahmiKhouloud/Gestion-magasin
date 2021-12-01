@@ -1,20 +1,27 @@
-<h1 mat-dialog-title>Review By user</h1>
 <div mat-dialog-content class="flex">
-  <div class="flex-1">
+  <div class="max-w-md hidden md:block">
     <img class="w-full" src="assets/images/products/details.jpg" alt="img not found" />
     <h2 class="text-center mt-12">product name</h2>
   </div>
-  <div class="flex-2 ml-24">
+  <div class="flex-2 md:ml-24">
+    <h1 mat-dialog-title>Review By user</h1>
+    <div
+      *ngIf="showError"
+      class="mb-8 relative py-3 pl-4 pr-10 leading-normal text-red-700 bg-red-100 rounded-lg"
+      role="alert"
+    >
+      <p>Rating is required to add a review</p>
+    </div>
     <p>Tell us what you think about this product. Would your recommend it , and why?</p>
 
-    <mat-form-field class="example-full-width" appearance="fill">
+    <mat-form-field class="textArea" appearance="fill">
       <mat-label>Leave a comment</mat-label>
-      <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+      <textarea matInput placeholder="Ex. It makes me feel..." [(ngModel)]="data.comment"></textarea>
     </mat-form-field>
     <div class="flex justify-start items-end">
-      <ul>
+      <ul class="starList">
         <li
-          class="ml-4"
+          class="ml-4 starItem"
           *ngFor="let star of data.stars"
           [ngClass]="{ selected: star <= tempRating }"
           (mouseover)="onStarHover(star)"
@@ -31,5 +38,5 @@
 </div>
 <div class="flex justify-end">
   <button class="mr-4" (click)="onCancelClick()" mat-button>Cancel</button>
-  <button mat-flat-button color="primary">Submit</button>
+  <button mat-flat-button color="primary" [disabled]="this.tempRating === 0" [mat-dialog-close]="data">Submit</button>
 </div>

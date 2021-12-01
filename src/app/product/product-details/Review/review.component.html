@@ -1,6 +1,7 @@
 <div class="flex justify-start items-end">
-  <ul>
+  <ul class="starList">
     <li
+      class="starItem"
       *ngFor="let star of stars"
       [ngClass]="{ selected: star <= tempRating }"
       (mouseover)="onHover(star)"
@@ -10,5 +11,46 @@
       ★
     </li>
   </ul>
-  <p class="ml-6">Buyers {{ rateDescriptions }}</p>
+  <p class="ml-6 flex-1">Buyers {{ rateDescriptions }}</p>
+  <button class="ml-12" mat-stroked-button color="primary" (click)="openDialog(0)">
+    <mat-icon>edit</mat-icon> Write a review
+  </button>
+</div>
+
+<div *ngFor="let review of reviews">
+  <mat-card class="mt-8">
+    <div class="flex items-start">
+      <div
+        class="
+          m-1
+          mr-6
+          w-16
+          h-16
+          relative
+          flex
+          justify-center
+          items-center
+          rounded-full
+          bg-red-500
+          text-xl text-white
+          uppercase
+          flex-none
+        "
+      >
+        {{ review.user[0] }}
+      </div>
+      <div>
+        <div class="mt-2">{{ review.user }}</div>
+        <mat-card-subtitle class="mt-20"
+          ><ul class="flex flex-row-reverse justify-end">
+            <li *ngFor="let star of stars" [ngClass]="{ selected: star <= review.rating }">★</li>
+          </ul>
+          {{ starsDescriptions[review.rating - 1] }}</mat-card-subtitle
+        >
+        <div class="pt-4 pb-4 pr-4">
+          {{ review.description }}
+        </div>
+      </div>
+    </div>
+  </mat-card>
 </div>

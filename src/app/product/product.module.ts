@@ -12,10 +12,12 @@ import { AddReviewDialog, ReviewComponent } from './product-details/Review/revie
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ProductListComponent, ProductDetailsComponent, ProductHeroComponent, ReviewComponent, AddReviewDialog],
   imports: [
+    FormsModule,
     MatDialogModule,
     MatInputModule,
     MatButtonModule,
