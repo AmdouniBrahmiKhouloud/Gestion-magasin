@@ -23,6 +23,17 @@
 | Stock | &#10004; | Ability of Update the Stock |
 | Stock History | &#10004; | Ability to see the Stock History |
 
+
+<b>Products Features by Saif Smairi</b>
+
+| Feature  |  Coded?       | Description  |
+|----------|:-------------:|:-------------|
+| Add a provider | &#10004; | Ability of Add a provider on the System |
+| List providers | &#10004; | Ability of List providers |
+| Edit a provider | &#10004; | Ability of Edit a provider |
+| Delete a provider | &#10004; | Ability of Delete a provider |
+
+
 # Lieblings
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.2.
