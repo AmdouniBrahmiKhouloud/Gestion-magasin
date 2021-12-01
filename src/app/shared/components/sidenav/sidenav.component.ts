@@ -10,12 +10,16 @@ import { User } from '../../../model/user';
 })
 export class SidenavComponent implements OnInit {
   navList = [];
-  constructor() { }
+  user:User = new User();
+  constructor(private auth:AuthService) { }
 
   ngOnInit(): void {
     this.navList = menuList;
-
-
+    this.user.nom=localStorage.getItem('loggedUserFirstName');
+    this.user.categorieClient=localStorage.getItem('loggedUserAccountCategory');
   }
 
+  onLogout() {
+    this.auth.logOut();
+  }
 }

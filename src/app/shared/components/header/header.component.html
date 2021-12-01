@@ -7,6 +7,9 @@
           <li *ngFor="let menu of menuList">
             <a mat-button [routerLink]="[menu.path]" routerLinkActive="bg-gray-100" class="text-lg font-bold py-2 px-5">{{ menu.name }}</a>
           </li>
+          <li >
+            <a mat-button [routerLink]="['']" class="text-lg font-bold py-2 px-5" *ngIf="user.categorieClient!=null && user.categorieClient !='admin'">Profil</a>
+          </li>
         </ul>
       </div>
       <button

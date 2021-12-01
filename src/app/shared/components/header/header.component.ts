@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit {
       this.isLessThenLargeDevice = matches;
     });
     this.user.nom=localStorage.getItem('loggedUserFirstName');
+    this.user.categorieClient=localStorage.getItem('loggedUserAccountCategory');
   }
 
   @HostListener('window:scroll', ['$event'])
