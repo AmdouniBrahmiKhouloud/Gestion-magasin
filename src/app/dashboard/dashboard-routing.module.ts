@@ -7,6 +7,7 @@ import { DashboardListeFournisseurComponent } from './dashboard-liste-fournisseu
 import { DashboardOrderComponent } from './dashboard-order/dashboard-order.component';
 import { DashboardProfileComponent } from './dashboard-profile/dashboard-profile.component';
 import { DashboardSavedItemComponent } from './dashboard-saved-item/dashboard-saved-item.component';
+import { ReclamationComponent } from './reclamation/reclamation.component';
 
 const DashboardChildrenRoute: Routes = [
   {
@@ -33,6 +34,11 @@ const DashboardChildrenRoute: Routes = [
   {
     path: 'liste-fournisseur',
     component: DashboardListeFournisseurComponent
+  },
+
+  {
+    path: 'reclamation',
+    component: ReclamationComponent
   }
 ];
 
