@@ -24,4 +24,5 @@ export class FournisseurService {
   updatefournisseur(fournisseur: Fournisseur) {
     return this.http.put(this.url + fournisseur.id, fournisseur);
   }
+  
 }

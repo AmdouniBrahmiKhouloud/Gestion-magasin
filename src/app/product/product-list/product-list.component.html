@@ -67,28 +67,29 @@
 </div>
 <div class="ll-products-area mb-24">
   <div class="container">
-    <div class="grid grid-cols-12 gap-6 xxl:gap-8" *ngIf="isLoaded">
-      <div *ngFor="let product of products" class="col-span-12 md:col-span-6 xl:col-span-4">
+    <div *ngIf="view === 'list'" class="grid grid-cols-12 gap-6 xxl:gap-8" >
+      <div *ngFor="let product of products | slice: 0:9 " class="col-span-12 md:col-span-6 xl:col-span-4">
         <mat-card class="ll-product">
-          <img mat-card-image [src]="product?.images[0]" alt="{{ product.name }}" style="width: 100%; margin: 0 0 20px" />
-          <mat-card-content class="flex">
-            <div class="flex-none w-10">
-              <img src="{{ product?.created_by?.avatar }}" alt="product?.created_by?.name" />
-            </div>
+          <img mat-card-image [src]="product?.image" alt="" style="width: 100%; margin: 0 0 20px" />
+          <!--mat-card-content class="flex"-->
+            <mat-card-content _ngcontent-vpo-c128="" class="mat-card mat-focus-indicator ll-product">
+              <img _ngcontent-vpo-c128="" mat-card-image="" class="mat-card-image" style="width: 100%; margin: 0 0 20px;" alt="Industry marketing by subscription" src="assets/images/products/02-1.png">
             <div class="flex-grow pl-3">
-              <h4 class="ll-product__creator">{{ product?.created_by?.name }}</h4>
+              <div class="ll-product__price-label"></div>
+              <h4 class="ll-product__creator text-accent font-bold"></h4>
               <h2 class="ll-product__name">
-                <a [routerLink]="['/products', product.id]">{{ product.name }}</a>
+                <a [routerLink]="['/products', product.id]"></a>
               </h2>
               <div class="flex justify-between mt-5">
-                <div class="ll-product__price-label">Prices:</div>
-                <div class="ll-product__price text-accent font-bold">€{{ product.price }}</div>
+                <div class="ll-product__price-label"><strong>{{product?.libelle}}</strong></div>
+                <div class="ll-product__price text-accent font-bold">€{{product?.prixUnitaire}}</div>
               </div>
             </div>
+            
           </mat-card-content>
           <mat-card-actions class="ll-product__action flex justify-between">
             <div class="flex-1 text-center flex items-center justify-center">
-              <mat-icon color="warn">star</mat-icon> {{ product.rating }}/5
+              <mat-icon color="warn">loyalty</mat-icon> #{{ product?.code }} 
             </div>
             <div class="flex-1 text-center">
               <a [routerLink]="['/products', product.id]" mat-raised-button color="warn" class="px-4">Read More</a>

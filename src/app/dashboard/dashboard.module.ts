@@ -10,6 +10,16 @@ import { SharedModule } from '../shared/shared.module';
 import { DashboardSavedItemComponent } from './dashboard-saved-item/dashboard-saved-item.component';
 import { DashboardProfileComponent } from './dashboard-profile/dashboard-profile.component';
 import { DashboardOrderComponent } from './dashboard-order/dashboard-order.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { FormsModule } from '@angular/forms';
+import { ListStockComponent } from './list-stock/list-stock.component';
+import { UpdateProductComponent } from './update-product/update-product.component';
+import { AddStockComponent } from './add-stock/add-stock.component';
+import { UpdateStockComponent } from './update-stock/update-stock.component';
+import { UpdateDetailProduitComponent } from './update-detail-produit/update-detail-produit.component';
+import { AddDetailProduitComponent } from './add-detail-produit/add-detail-produit.component';
+
+
 
 @NgModule({
   declarations: [
@@ -17,8 +27,18 @@ import { DashboardOrderComponent } from './dashboard-order/dashboard-order.compo
     DashboardIndexComponent,
     DashboardSavedItemComponent,
     DashboardProfileComponent,
-    DashboardOrderComponent
+    DashboardOrderComponent,
+    AddProductComponent,
+    ListStockComponent,
+    UpdateProductComponent,
+    AddStockComponent,
+    UpdateStockComponent,
+    UpdateDetailProduitComponent,
+    AddDetailProduitComponent,
+    
+   
+    
   ],
-  imports: [CommonModule, DashboardRoutingModule, SharedModule, MatMenuModule]
+  imports: [CommonModule, DashboardRoutingModule, SharedModule, MatMenuModule,FormsModule]
 })
 export class DashboardModule {}
