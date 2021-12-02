@@ -2,6 +2,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { User } from '../../model/user';
 
 @Component({
   selector: 'll-dashboard-layout',
@@ -10,7 +11,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class DashboardLayoutComponent implements OnInit {
   isLessThenLargeDevice;
-
+  user:User;
   constructor(private breakpointObserver: BreakpointObserver, private router: Router,private auth:AuthService) {}
 
   ngOnInit(): void {

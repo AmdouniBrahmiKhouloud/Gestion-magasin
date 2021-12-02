@@ -22,7 +22,7 @@ export class UserService {
   addNewClient(user: User){
     return this.http.post(this.url + '/add-client', user);
   }
-  deleteClien(id: number){
+  deleteClient(id: number){
     return this.http.delete(this.url +'/remove-client/' +id)
   }
 }
