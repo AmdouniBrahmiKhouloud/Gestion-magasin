@@ -52,6 +52,10 @@
                 <mat-icon>delete</mat-icon>
                 <span>Delete</span>
               </button>
+              <button mat-menu-item [routerLink]="['/dashboard/fournisseurProducts', product.idFournisseur]">
+                <mat-icon>list_alt</mat-icon>
+                <span>Liste des produits</span>
+              </button>
             </mat-menu>
           </div>
         </div>

@@ -5,6 +5,7 @@ import { DashboardIndexComponent } from './dashboard-index/dashboard-index.compo
 import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component';
 import { DashboardListeFournisseurComponent } from './dashboard-liste-fournisseur/dashboard-liste-fournisseur.component';
 import { DashboardOrderComponent } from './dashboard-order/dashboard-order.component';
+import { DashboardProduitParFournisseurComponent } from './dashboard-produit-par-fournisseur/dashboard-produit-par-fournisseur.component';
 import { DashboardProfileComponent } from './dashboard-profile/dashboard-profile.component';
 import { DashboardSavedItemComponent } from './dashboard-saved-item/dashboard-saved-item.component';
 import { ReclamationComponent } from './reclamation/reclamation.component';
@@ -39,6 +40,10 @@ const DashboardChildrenRoute: Routes = [
   {
     path: 'reclamation',
     component: ReclamationComponent
+  },
+  {
+    path: 'fournisseurProducts/:id',
+    component: DashboardProduitParFournisseurComponent
   }
 ];
 

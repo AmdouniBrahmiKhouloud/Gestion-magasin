@@ -17,7 +17,8 @@ export class DashboardAjoutFournisseurComponent implements OnInit {
     code: ['', Validators.required],
     label: ['', Validators.required],
     adresse: ['', Validators.required],
-    numero: ['', Validators.required]
+    numero: ['', Validators.required],
+    email: ['', Validators.required]
   });
   constructor(private fournisseurService: FournisseurService, private builder: FormBuilder) {}
 
@@ -28,6 +29,8 @@ export class DashboardAjoutFournisseurComponent implements OnInit {
     this.fournisseur.libelle = formfourni.value.label;
     this.fournisseur.adresse = formfourni.value.adresse;
     this.fournisseur.numero = formfourni.value.numero;
+    this.fournisseur.email = formfourni.value.email;
+
     console.log(this.fournisseur);
     this.fournisseurService.addfournisseur(this.fournisseur).subscribe(data => {
       this.alert = true;

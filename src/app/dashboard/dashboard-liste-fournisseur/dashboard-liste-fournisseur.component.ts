@@ -26,6 +26,12 @@ export class DashboardListeFournisseurComponent implements OnInit {
     });
   }
 
+  listeProdPerFournisseur(fournisseur: Fournisseur) {
+    this.fournisseurService.listeProdPerFournisseur(fournisseur).subscribe(data => {
+      console.log(data);
+    });
+  }
+
   remove(fournisseur: Fournisseur) {
     // console.log(fournisseur.idFournisseur);
     this.fournisseurService.deletefournisseur(fournisseur.idFournisseur).subscribe(data => {

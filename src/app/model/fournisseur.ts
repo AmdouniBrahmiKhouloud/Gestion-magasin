@@ -4,4 +4,5 @@ export class Fournisseur {
   libelle: string;
   adresse: string;
   numero: string;
+  email: string;
 }
