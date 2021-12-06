@@ -5,12 +5,14 @@ import { FacturesRoutingModule } from './factures-routing.module';
 import { FacturesComponent } from './factures.component';
 import { FactureComponent } from './facture/facture.component';
 import {SharedModule} from '../shared/shared.module';
+import { TestProductsComponent } from './test-products/test-products.component';
 
 
 @NgModule({
   declarations: [
     FacturesComponent,
-    FactureComponent
+    FactureComponent,
+    TestProductsComponent
   ],
   imports: [
     CommonModule,

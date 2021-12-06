@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {FactureService} from '../services/facture.service';
+import {Product} from '../model/product';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -8,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FacturesComponent implements OnInit {
 
-  constructor() { }
+  listFactures: Product[] ;
+  numberFactures: number ;
+
+  constructor(private factureService: FactureService) {
+
+  }
 
   ngOnInit(): void {
+    this.listFactures = this.factureService.listItems ;
+    this.numberFactures = this.listFactures.length;
   }
+
+
 
 }
