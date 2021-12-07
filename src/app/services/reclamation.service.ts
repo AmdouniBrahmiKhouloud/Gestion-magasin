@@ -14,6 +14,10 @@ export class ReclamationService {
     return this.http.get<Reclamation[]>(this.url + 'retrieve-all-reclamation');
   }
 
+  getListreclamationRespondedPerClient(idclient) {
+    return this.http.get<Reclamation[]>(this.url + 'retrieve-all-reclamationRespondedPerClient/' + idclient);
+  }
+
   addreclamation(reclamation: Reclamation) {
     return this.http.post(this.url + 'add-reclamation', reclamation);
   }
@@ -21,7 +25,7 @@ export class ReclamationService {
   deletereclamation(id: string) {
     return this.http.delete(this.url + 'remove-reclamation/' + id);
   }
-  /*   updatefournisseur(fournisseur: Reclamation) {
-    return this.http.put(this.url + 'updateFournisseur/' + fournisseur.idFournisseur, fournisseur);
-  } */
+  updatereclamation(fournisseur: Reclamation) {
+    return this.http.put(this.url + 'updatereclamation/' + fournisseur.idReclamation, fournisseur);
+  }
 }

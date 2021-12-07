@@ -16,6 +16,9 @@ export class ReclamationComponent implements OnInit {
   userName;
   loggedUserEmail;
   idconnectedUser;
+  alert = false;
+
+  reclamationPerclientResponded;
 
   formfourni = this.builder.group({
     detail: ['', Validators.required]
@@ -25,16 +28,26 @@ export class ReclamationComponent implements OnInit {
     this.userName = localStorage.getItem('loggedUserLastName') + ' ' + localStorage.getItem('loggedUserFirstName');
     this.loggedUserEmail = localStorage.getItem('loggedUserEmail');
     this.idconnectedUser = localStorage.getItem('loggedUserId');
+    this.getListreclamationRespondedPerclient();
+  }
+
+  getListreclamationRespondedPerclient() {
+    this.recService.getListreclamationRespondedPerClient(this.idconnectedUser).subscribe(data => {
+      this.reclamationPerclientResponded = data;
+      console.log(data);
+    });
   }
 
   addreclamation(formfourni) {
     this.userService.getClientById(this.idconnectedUser).subscribe(data => {
       this.reclamation.detail = formfourni.value.detail;
-      this.reclamation.sender = data;
+      this.reclamation.client = data;
       this.reclamation.date = new Date();
-
+      console.log(this.reclamation.client);
       this.recService.addreclamation(this.reclamation).subscribe(data => {
-        console.log('done recla');
+        this.alert = true;
+
+        console.log(data);
       });
     });
   }
