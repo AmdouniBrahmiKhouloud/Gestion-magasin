@@ -34,6 +34,10 @@ export class FournisseurService {
     return this.http.get<Fournisseur[]>(this.url + 'retrieve-productsParFournisseur/' + id);
   }
 
+  statsfournisseur() {
+    return this.http.get(this.url + 'stats/');
+  }
+
   Sendmail(mailFournisseur: MailFournisseur) {
     return this.http.post(this.url + 'sendMailfournisseur', mailFournisseur);
   }

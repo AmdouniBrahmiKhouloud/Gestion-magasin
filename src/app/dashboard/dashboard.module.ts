@@ -21,6 +21,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { ReclamationComponent } from './reclamation/reclamation.component';
 import { DashboardProduitParFournisseurComponent } from './dashboard-produit-par-fournisseur/dashboard-produit-par-fournisseur.component';
+import { DashboardStatsFournisseursComponent } from './dashboard-stats-fournisseurs/dashboard-stats-fournisseurs.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { DashboardProduitParFournisseurComponent } from './dashboard-produit-par
     DashboardListeFournisseurComponent,
     UpdateDialogFournisseurComponent,
     ReclamationComponent,
-    DashboardProduitParFournisseurComponent
+    DashboardProduitParFournisseurComponent,
+    DashboardStatsFournisseursComponent
   ],
   imports: [
     CommonModule,
