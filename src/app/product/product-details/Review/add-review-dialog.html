@@ -16,14 +16,14 @@
 
     <mat-form-field class="textArea" appearance="fill">
       <mat-label>Leave a comment</mat-label>
-      <textarea matInput placeholder="Ex. It makes me feel..." [(ngModel)]="data.comment"></textarea>
+      <textarea matInput placeholder="Ex. It makes me feel..." [(ngModel)]="review.description"></textarea>
     </mat-form-field>
     <div class="flex justify-start items-end">
       <ul class="starList">
         <li
           class="ml-4 starItem"
           *ngFor="let star of data.stars"
-          [ngClass]="{ selected: star <= tempRating }"
+          [ngClass]="{ selected: star <= review.rating }"
           (mouseover)="onStarHover(star)"
           (mouseout)="onEndHover()"
           (click)="onClick(star)"
@@ -38,5 +38,22 @@
 </div>
 <div class="flex justify-end">
   <button class="mr-4" (click)="onCancelClick()" mat-button>Cancel</button>
-  <button mat-flat-button color="primary" [disabled]="this.tempRating === 0" [mat-dialog-close]="data">Submit</button>
+  <button
+    *ngIf="review.id"
+    mat-flat-button
+    color="primary"
+    [disabled]="review.rating === 0"
+    [mat-dialog-close]="review"
+  >
+    Update
+  </button>
+  <button
+    *ngIf="!review.id"
+    mat-flat-button
+    color="primary"
+    [disabled]="review.rating === 0"
+    [mat-dialog-close]="review"
+  >
+    Submit
+  </button>
 </div>

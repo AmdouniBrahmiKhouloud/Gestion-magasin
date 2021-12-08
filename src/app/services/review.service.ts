@@ -1,21 +1,32 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 import { Review } from '../model/review';
-
 @Injectable({
   providedIn: 'root'
 })
 export class ReviewService {
-  url = environment.url + 'reviews';
-
   constructor(private http: HttpClient) {}
+
+  url = environment.url + 'reviews';
 
   getListReviews() {
     return this.http.get<Review[]>(this.url);
   }
 
-  getReviewsByProduct() {
-    return this.http.get<Review>(`${this.url}/1`);
+  addNewReview(review: Review) {
+    return this.http.post(this.url + '/new', review);
+  }
+
+  getReview(client: number, product: number) {
+    return this.http.get(`${this.url}/checkReview/${client}/${product}`);
+  }
+
+  update(review: Review) {
+    return this.http.put(this.url + '/update', review);
+  }
+
+  delete(review: number) {
+    return this.http.delete(`${this.url}/delete/${review}`);
   }
 }
