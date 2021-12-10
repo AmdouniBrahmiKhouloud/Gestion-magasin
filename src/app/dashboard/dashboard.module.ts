@@ -10,6 +10,10 @@ import { SharedModule } from '../shared/shared.module';
 import { DashboardSavedItemComponent } from './dashboard-saved-item/dashboard-saved-item.component';
 import { DashboardProfileComponent } from './dashboard-profile/dashboard-profile.component';
 import { DashboardOrderComponent } from './dashboard-order/dashboard-order.component';
+import { DashboardUpdateProfilComponent } from './dashboard-update-profil/dashboard-update-profil.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -17,8 +21,10 @@ import { DashboardOrderComponent } from './dashboard-order/dashboard-order.compo
     DashboardIndexComponent,
     DashboardSavedItemComponent,
     DashboardProfileComponent,
-    DashboardOrderComponent
+    DashboardOrderComponent,
+    DashboardUpdateProfilComponent
   ],
-  imports: [CommonModule, DashboardRoutingModule, SharedModule, MatMenuModule]
+  imports: [
+    MatSnackBarModule,CommonModule, DashboardRoutingModule, SharedModule, MatMenuModule, ReactiveFormsModule, MatFormFieldModule]
 })
 export class DashboardModule {}

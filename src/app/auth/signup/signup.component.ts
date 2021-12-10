@@ -4,6 +4,8 @@ import { User } from '../../model/user';
 import Validation from './Validation';
 import {Router} from "@angular/router";
 import { UserService } from '../../services/user.service';
+import { Role } from '../../model/Role';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'll-signup',
   templateUrl: './signup.component.html',
@@ -13,8 +15,9 @@ export class SignupComponent implements OnInit {
   myForm: FormGroup;
   user: User = new User();
   submitted = false;
+  role : Role = new  Role();
   profession: any = ['Docteur', 'ingenieur', 'etudiant', 'commercial','cadre','autre']
-  constructor(private builder: FormBuilder ,private userService:UserService,private router: Router) { }
+  constructor(private builder: FormBuilder ,private userService:UserService,private router: Router,private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.myForm = this.builder.group({
@@ -44,9 +47,12 @@ export class SignupComponent implements OnInit {
     this.user.password= this.myForm.get('password').value;
     this.user.profession= this.myForm.get('profession').value;
     this.user.categorieClient= "ordinaire";
+    this.user.active=false;
     //console.log(this.user);
     if(this.submitted && this.myForm.valid){
       this.userService.addNewClient(this.user).subscribe();
+      this._snackBar.open("Please check your email to verify your account.","Done");
+     // alert();
       this.router.navigate(['/auth/login'])
     }
   }

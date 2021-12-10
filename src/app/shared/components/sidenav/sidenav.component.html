@@ -1,7 +1,7 @@
 <div class="sidenav flex flex-col min-h-screen p-5">
     <mat-nav-list>
         <a mat-list-item [routerLink]="item?.path" *ngFor="let item of navList"> {{ item?.name }} </a>
-        <a mat-list-item [routerLink]="['']"  *ngIf="user.categorieClient!=null && user.categorieClient !='admin'">Profil</a>
+        <a mat-list-item [routerLink]="['/dashboard/profile']"  *ngIf="user.categorieClient!=null && user.categorieClient !='admin'">Profil</a>
         <a mat-list-item [routerLink]="['/dashboard']"  *ngIf="user.categorieClient!=null && user.categorieClient ==='admin'">Dashboard</a>
     </mat-nav-list>
     <div class="flex items-center justify-between mt-auto" *ngIf="user.nom ==null" >

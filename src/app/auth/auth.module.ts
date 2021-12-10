@@ -7,11 +7,13 @@ import { SignupComponent } from './signup/signup.component';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
   declarations: [LoginComponent, SignupComponent],
   imports: [
+    MatSnackBarModule,
     CommonModule,
     AuthRoutingModule,
     SharedModule,

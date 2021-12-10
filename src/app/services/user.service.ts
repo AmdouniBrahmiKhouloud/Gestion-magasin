@@ -17,7 +17,7 @@ export class UserService {
     return this.http.get<User>(this.url + '/retrieve-client/' +id )
   }
   updateClient(user: User){
-    return this.http.put(this.url +'/modify-client',user);
+    return this.http.put(this.url +'/modify-client/'+user.idClient,user);
   }
   addNewClient(user: User){
     return this.http.post(this.url + '/add-client', user);

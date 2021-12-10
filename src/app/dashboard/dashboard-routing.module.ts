@@ -5,6 +5,7 @@ import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.co
 import { DashboardOrderComponent } from './dashboard-order/dashboard-order.component';
 import { DashboardProfileComponent } from './dashboard-profile/dashboard-profile.component';
 import { DashboardSavedItemComponent } from './dashboard-saved-item/dashboard-saved-item.component';
+import { DashboardUpdateProfilComponent } from './dashboard-update-profil/dashboard-update-profil.component';
 
 const DashboardChildrenRoute: Routes = [
   {
@@ -23,6 +24,9 @@ const DashboardChildrenRoute: Routes = [
   {
     path: 'orders',
     component: DashboardOrderComponent
+  },{
+    path:'update-profile',
+    component: DashboardUpdateProfilComponent
   }
 ];
 

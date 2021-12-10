@@ -1,3 +1,5 @@
+import { Role } from './Role';
+
 export class User{
   idClient: number;
   nom: string;
@@ -7,5 +9,7 @@ export class User{
   password: string;
   categorieClient: string;
   profession: string;
+  active:boolean;
+  roles:Role[];
 
 }

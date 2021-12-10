@@ -4,48 +4,57 @@ import { User } from '../model/user';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private toastr: ToastrService;
   private validUser: Boolean = false;
   user:User = new User();
   public curUser= new BehaviorSubject(this.user);
   sharedUser = this.curUser.asObservable();
   url = environment.url + 'client';
   constructor(private http: HttpClient, private router: Router) { }
-  getUser(email:string){
-    return this.http.get<User>(this.url+'/login/'+ email);
+  getUser(email:string, password:string){
+    return this.http.get<User>(this.url+'/login/'+ email+'/'+password);
   }
   login(email:string, password: string){
-    this.getUser(email).subscribe((data:User)=>{
-      this.user.idClient=data.idClient;
-      this.user.nom=data.nom;
-      this.user.prenom=data.prenom;
-      this.user.email=data.email;
-      this.user.password=data.password;
-      this.user.dateNaissance=data.dateNaissance;
-      this.user.categorieClient=data.categorieClient;
-      this.user.profession=data.profession;
-      if((this.user.email===email) && (this.user.password===password)){
-        this.validUser= true;
-        localStorage.setItem('loggedUserId',String(this.user.idClient));
-        localStorage.setItem('loggedUserFirstName',this.user.nom);
-        localStorage.setItem('loggedUserLastName',this.user.prenom);
-        localStorage.setItem('loggedUserEmail',this.user.email);
-        localStorage.setItem('loggedUserBirthDate',String(this.user.dateNaissance));
-        localStorage.setItem('loggedUserAccountCategory',this.user.categorieClient);
-        localStorage.setItem('loggedUserProfession',this.user.profession);
-        localStorage.setItem('isloggedIn',String(this.validUser));
-        this.curUser.next(this.user);
-        if (this.user.categorieClient === "admin"){
-          this.router.navigate(['/dashboard']);
-        }else {
-          this.router.navigate(['']);
-        }
-      }else {
+    this.getUser(email,password).subscribe((data:User)=>{
+
+      if (data == null){
+        console.log(data)
+        //.error()}
         alert("please give a valid email and password")
+        //this.toastr.error()
+        }
+      else {
+        this.user.idClient=data.idClient;
+        this.user.nom=data.nom;
+        this.user.prenom=data.prenom;
+        this.user.email=data.email;
+        this.user.password=data.password;
+        this.user.dateNaissance=data.dateNaissance;
+        this.user.categorieClient=data.categorieClient;
+        this.user.profession=data.profession;
+        if((this.user.email===email)){
+          this.validUser= true;
+          localStorage.setItem('loggedUserId',String(this.user.idClient));
+          localStorage.setItem('loggedUserFirstName',this.user.nom);
+          localStorage.setItem('loggedUserLastName',this.user.prenom);
+          localStorage.setItem('loggedUserEmail',this.user.email);
+          localStorage.setItem('loggedUserBirthDate',String(this.user.dateNaissance));
+          localStorage.setItem('loggedUserAccountCategory',this.user.categorieClient);
+          localStorage.setItem('loggedUserProfession',this.user.profession);
+          localStorage.setItem('isloggedIn',String(this.validUser));
+          this.curUser.next(this.user);
+          if (this.user.categorieClient === "admin"){
+            this.router.navigate(['/dashboard']);
+          }else {
+            this.router.navigate(['']);
+          }
+        }
       }
     });
 

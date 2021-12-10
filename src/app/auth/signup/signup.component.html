@@ -16,9 +16,8 @@
               formControlName='firstName'
               type="text"
               placeholder="First Name"
-              [ngClass]="{ 'is-invalid': submitted && myForm.get('firstName').errors }"
             />
-            <div *ngIf="submitted && myForm.get('firstName').errors" class="invalid-feedback">
+            <div *ngIf="myForm.get('firstName').touched && myForm.get('firstName').errors" class="invalid-feedback">
               <mat-error *ngIf="myForm.get('firstName').errors.required">
                 Firstname is <strong>required</strong>
               </mat-error>
@@ -35,9 +34,8 @@
               formControlName='lastName'
               type="text"
               placeholder="Last Name"
-              [ngClass]="{ 'is-invalid': submitted && myForm.get('lastName').errors }"
             />
-            <div *ngIf="submitted && myForm.get('lastName').errors" class="invalid-feedback">
+            <div *ngIf="myForm.get('lastName').touched && myForm.get('lastName').errors" class="invalid-feedback">
               <mat-error *ngIf="myForm.get('lastName').errors.required">
                 Lastname is <strong>required</strong>
               </mat-error>
@@ -55,9 +53,8 @@
               formControlName='email'
               type="text"
               placeholder="Email Adress"
-              [ngClass]="{ 'is-invalid': submitted && myForm.get('email').errors }"
             />
-            <div *ngIf="submitted && myForm.get('email').errors" class="invalid-feedback">
+            <div *ngIf="myForm.get('email').touched && myForm.get('email').errors" class="invalid-feedback">
               <mat-error *ngIf="myForm.get('email').errors.required">
                 Email is <strong>required</strong>
               </mat-error>
@@ -73,9 +70,8 @@
               id="birthday"
               formControlName='birthDate'
               type="date"
-              [ngClass]="{ 'is-invalid': submitted && myForm.get('birthDate').errors }"
             />
-            <div *ngIf="submitted && myForm.get('birthDate').errors" class="invalid-feedback">
+            <div *ngIf="myForm.get('birthDate').touched && myForm.get('birthDate').errors" class="invalid-feedback">
               <mat-error *ngIf="myForm.get('birthDate').errors.required">
                 Birthdate is <strong>required</strong>
               </mat-error>
@@ -87,7 +83,7 @@
             <option *ngFor="let profession of profession" [ngValue]="profession">{{profession}}</option>
           </select>
             <!-- error block -->
-            <div class="invalid-feedback" *ngIf="submitted && myForm.get('profession').errors">
+            <div class="invalid-feedback" *ngIf="myForm.get('profession').touched && myForm.get('profession').errors">
               <mat-error *ngIf=" myForm.get('profession').errors?.required">
                 <sup>*</sup>Please enter your profession
               </mat-error>
@@ -101,9 +97,8 @@
               type="password"
               formControlName='password'
               placeholder="Password"
-              [ngClass]="{ 'is-invalid': submitted && myForm.get('password').errors }"
             />
-            <div *ngIf="submitted && myForm.get('password').errors" class="invalid-feedback">
+            <div *ngIf="myForm.get('password').touched && myForm.get('password').errors" class="invalid-feedback">
               <mat-error *ngIf="myForm.get('password').errors.required">
                 Passwordis <strong>required</strong>
               </mat-error>
@@ -117,9 +112,8 @@
               type="password"
               placeholder="Conformation password"
               formControlName='confirmPassword'
-              [ngClass]="{ 'is-invalid': submitted && myForm.get('confirmPassword').errors }"
             />
-            <div *ngIf="submitted && myForm.get('confirmPassword').errors" class="invalid-feedback">
+            <div *ngIf=" myForm.get('confirmPassword').touched && myForm.get('confirmPassword').errors" class="invalid-feedback">
               <mat-error *ngIf="myForm.get('confirmPassword').errors.required">
                 Confirm Password is <strong>required</strong>
               </mat-error>
