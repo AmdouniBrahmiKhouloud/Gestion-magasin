@@ -11,13 +11,16 @@ import { User } from '../../model/user';
 })
 export class DashboardLayoutComponent implements OnInit {
   isLessThenLargeDevice;
-  user:User;
+  categorieClient: string=localStorage.getItem('loggedUserAccountCategory');
   constructor(private breakpointObserver: BreakpointObserver, private router: Router,private auth:AuthService) {}
 
   ngOnInit(): void {
+    //this.user.nom =localStorage.getItem('loggedUserFirstName');
+    //this.user.categorieClient=localStorage.getItem('loggedUserAccountCategory');
     this.breakpointObserver.observe(['(max-width: 1199px)']).subscribe(({ matches }) => {
       this.isLessThenLargeDevice = matches;
     });
+    //console.log(this.user)
   }
   onLogout(): void {
     this.auth.logOut();
