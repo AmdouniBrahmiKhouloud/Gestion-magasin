@@ -9,6 +9,7 @@ import { DashboardOrderComponent } from './dashboard-order/dashboard-order.compo
 import { DashboardProfileComponent } from './dashboard-profile/dashboard-profile.component';
 import { DashboardSavedItemComponent } from './dashboard-saved-item/dashboard-saved-item.component';
 import { ListStockComponent } from './list-stock/list-stock.component';
+import { ShowProductComponent } from './show-product/show-product.component';
 import { UpdateDetailProduitComponent } from './update-detail-produit/update-detail-produit.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { UpdateStockComponent } from './update-stock/update-stock.component';
@@ -22,6 +23,10 @@ const DashboardChildrenRoute: Routes = [
   {
     path: 'add-detail-produit',
     component: AddDetailProduitComponent
+  },
+  {
+    path: 'show-produit/:id',
+    component: ShowProductComponent
   },
   {
     path: 'update-detail-produit/:id',

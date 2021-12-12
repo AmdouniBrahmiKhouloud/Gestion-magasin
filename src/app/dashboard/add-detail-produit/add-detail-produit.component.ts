@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DetailProduct } from 'src/app/model/DetailProduct';
 import { DetailProductService } from 'src/app/services/detailProduit.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-add-detail-produit',
   templateUrl: './add-detail-produit.component.html',
@@ -17,6 +17,13 @@ export class AddDetailProduitComponent implements OnInit {
   onSubmit(){
     console.log(this.detailProduct);
     this.saveDetailProduct();
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Your insertion has been saved',
+      showConfirmButton: false,
+      timer: 1500
+    })
     this.goToDetailProductList();
   }
 

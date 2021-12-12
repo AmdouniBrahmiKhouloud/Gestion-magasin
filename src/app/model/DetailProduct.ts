@@ -2,6 +2,6 @@ export class DetailProduct{
   idDetailProduit : number;
   dateCreation : Date;
   dateDerniereModification : Date;
-  prixUnitaire :number;
+  //prixUnitaire :number;
   categorieProduit : any;
 }

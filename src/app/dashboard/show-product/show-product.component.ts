@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NotificationsService } from 'angular2-notifications';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
-  selector: 'll-product-details',
-  templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.scss']
+  selector: 'app-show-product',
+  templateUrl: './show-product.component.html',
+  styleUrls: ['./show-product.component.scss']
 })
-export class ProductDetailsComponent implements OnInit {
+export class ShowProductComponent implements OnInit {
   product ;
   id:number;
   definedUrl = this.productService.url+'Imgproduits/';
+
   constructor(private productService : ProductService
     , private route : ActivatedRoute) { }
 
@@ -20,6 +20,5 @@ export class ProductDetailsComponent implements OnInit {
     this.productService.getProduct( this.id).subscribe(data =>
       {this.product = data}, error => console.log(error));
   }
- 
 
 }

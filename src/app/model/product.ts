@@ -1,3 +1,5 @@
+import { DetailProduct } from "./DetailProduct";
+import { Stock } from "./stock";
 
 
 export class Product{
@@ -6,5 +8,9 @@ export class Product{
   code: string;
   libelle: string;
   prixUnitaire: number;
+ // rayon :any;
+  stockName : String;
+  categoryName : String;
+  description : String;
   
 }

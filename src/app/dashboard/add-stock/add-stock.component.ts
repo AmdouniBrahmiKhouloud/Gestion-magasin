@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Stock } from 'src/app/model/stock';
+import { ProductService } from 'src/app/services/product.service';
 import { StockService } from 'src/app/services/stock.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-add-stock',
   templateUrl: './add-stock.component.html',
@@ -10,13 +11,27 @@ import { StockService } from 'src/app/services/stock.service';
 })
 export class AddStockComponent implements OnInit {
   stock : Stock = new Stock();
-  constructor(private stockService: StockService, private route: Router) { }
+  products;
+  constructor(private stockService: StockService, private route: Router, private productService: ProductService) { }
 
   ngOnInit(): void {
+    this.productService.getListProduct().subscribe(
+      (data)=> {
+        this.products=data;
+      console.log(this.products=data)
+    } 
+    ) ;
   }
   onSubmit(){
     console.log(this.stock);
     this.saveStock();
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Your insertion has been saved',
+      showConfirmButton: false,
+      timer: 1500
+    })
     this.goToStockList();
   }
 

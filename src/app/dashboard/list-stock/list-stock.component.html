@@ -20,6 +20,8 @@
       <div class="flex flex-col border ltLg:responsive">
         <div class="flex items-center p-4 border-b hover:bg-blue-100">
           <div class="w-4/12 font-medium">Stock label </div>
+          <div class="w-4/12 font-medium">Product</div>
+          <div class="w-4/12 font-medium">Provider</div>
           <div class="w-4/12 font-medium">Amount</div>
         
           <div class="w-5/12 font-medium">Minimum quantity </div>
@@ -32,8 +34,19 @@
             <mat-icon color="warn">loyalty</mat-icon> {{stock.libelleStock }} 
 
         </div>
+ 
+         
+          <div class="w-2/12 font-medium ">
+             {{stock.productsName}} 
+
+        </div>
        
-          
+
+         
+          <div class="w-2/12 font-medium ">
+            {{stock.fournisseursName }} 
+
+        </div>
           <!--div class="w-3/12 font-medium"-->
           <div  
             class="bg-blue-500 text-blue-500 w-3/12 font-medium text-[12px] bg-opacity-20 rounded-full px-3 inline-block font-bold py-[3px]"
@@ -54,10 +67,10 @@
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu" xposition="before">
-              <button mat-menu-item>
+              <!--button mat-menu-item>
                 <mat-icon>dialpad</mat-icon>
                 <span>Details</span>
-              </button>
+              </button-->
               <button mat-menu-item (click)="deleteStock(stock.idstock)">
                 <mat-icon>delete</mat-icon>
                 <span>Delete</span>
