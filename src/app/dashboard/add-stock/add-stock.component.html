@@ -20,7 +20,7 @@
 
   <select  class="border border-gray-100 p-1 px-1 w-full sm:w-1/6 rounded-sm" id="fournisseursName" [(ngModel)] = "stock.fournisseursName" name="fournisseursName" class="form-control" required #fn2="ngModel" >
     <option>providers</option>
-     <option *ngFor="">{{stock.fournisseursName}}</option>
+     <option *ngFor="let stock of fournisseurs">{{stock.libelle}}</option>
    </select>
    <div class="alert alert-danger" *ngIf=" fn2.invalid && fn2.touched ">
      <div class="bg-red-500 text-red-500 w-10/12 font-medium text-[13px] bg-opacity-20 rounded-full px-3 inline-block font-bold py-[3px] hover:bg-blue-100">this field is required</div>

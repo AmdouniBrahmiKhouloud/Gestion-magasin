@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Stock } from 'src/app/model/stock';
+import { FournisseurService } from 'src/app/services/fournisseur.service';
 import { ProductService } from 'src/app/services/product.service';
 import { StockService } from 'src/app/services/stock.service';
 import Swal from 'sweetalert2';
@@ -12,9 +13,19 @@ import Swal from 'sweetalert2';
 export class AddStockComponent implements OnInit {
   stock : Stock = new Stock();
   products;
-  constructor(private stockService: StockService, private route: Router, private productService: ProductService) { }
+  fournisseurs
+  constructor(private stockService: StockService,private fournisseurService: FournisseurService, private route: Router, private productService: ProductService) { }
 
   ngOnInit(): void {
+
+ 
+      this.fournisseurService.getListfournisseur().subscribe(data => {
+        this.fournisseurs = data;
+        console.log((this.fournisseurs = data));
+      });
+    
+
+
     this.productService.getListProduct().subscribe(
       (data)=> {
         this.products=data;
