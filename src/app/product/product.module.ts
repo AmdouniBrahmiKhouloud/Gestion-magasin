@@ -8,16 +8,29 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductHeroComponent } from './product-list/product-hero/product-hero.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { HttpClientModule } from '@angular/common/http';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FormsModule } from '@angular/forms';
+import { SimpleNotificationsModule } from 'angular2-notifications';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppComponent } from '../app.component';
+
+
 
 @NgModule({
-  declarations: [ProductListComponent, ProductDetailsComponent, ProductHeroComponent],
+  declarations: [ProductListComponent, ProductDetailsComponent, ProductHeroComponent ],
   imports: [
     CommonModule,
     ProductRoutingModule,
     SharedModule,
     MatExpansionModule,
     NgParticlesModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    HttpClientModule,
+    Ng2SearchPipeModule,
+    FormsModule,
+   
+   
   ]
 })
-export class ProductModule { }
+export class ProductModule {  }

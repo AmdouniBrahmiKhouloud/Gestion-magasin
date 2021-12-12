@@ -26,19 +26,27 @@
             ><mat-icon class="mr-2">account_circle</mat-icon> View my profile</a
           >
           <a
-            mat-list-item
-            routerLink="/dashboard/saved-items"
-            routerLinkActive="bg-gray-200"
-            class="font-semibold text-gray-500 hover:text-primary"
-            ><mat-icon class="mr-2">list</mat-icon> Saved Items</a
-          >
-          <a
-            mat-list-item
-            routerLink="/dashboard/orders"
-            routerLinkActive="bg-gray-200"
-            class="font-semibold text-gray-500 hover:text-primary"
-            ><mat-icon class="mr-2">article</mat-icon> Orders</a
-          >
+                      mat-list-item
+                      routerLink="/dashboard/product-list"
+                      routerLinkActive="bg-gray-200"
+                      class="font-semibold text-gray-500 hover:text-primary"
+                      ><mat-icon class="mr-2">list</mat-icon> Product Managment</a
+                    >
+                    <a
+                    mat-list-item
+                    routerLink="/dashboard/stat-product"
+                    routerLinkActive="bg-gray-200"
+                    class="font-semibold text-gray-500 hover:text-primary"
+                    >
+                    <mat-icon class="mr-2">bar_chart</mat-icon> Stat of Products</a
+                  >
+                    <a
+                      mat-list-item
+                      routerLink="/dashboard/list-stock"
+                      routerLinkActive="bg-gray-200"
+                      class="font-semibold text-gray-500 hover:text-primary"
+                      ><mat-icon class="mr-2">article</mat-icon> Stock Managment</a
+                    >
           <a (click)="onLogout()" mat-list-item class="font-semibold text-gray-500 hover:text-primary"><mat-icon class="mr-2">logout</mat-icon> Logout</a>
         </mat-nav-list>
       </div>
@@ -101,17 +109,24 @@
                     >
                     <a
                       mat-list-item
-                      routerLink="/dashboard/saved-items"
+                      routerLink="/dashboard/product-list"
                       routerLinkActive="bg-gray-200"
                       class="font-semibold text-gray-500 hover:text-primary"
-                      ><mat-icon class="mr-2">list</mat-icon> Saved Items</a
+                      ><mat-icon class="mr-2">list</mat-icon> Product Managment</a
                     >
                     <a
+                    mat-list-item
+                    routerLink="/dashboard/stat-product"
+                    routerLinkActive="bg-gray-200"
+                    class="font-semibold text-gray-500 hover:text-primary"
+                    ><mat-icon class="mr-2">bar_chart</mat-icon> Stat of Products</a
+                  >
+                    <a
                       mat-list-item
-                      routerLink="/dashboard/orders"
+                      routerLink="/dashboard/list-stock"
                       routerLinkActive="bg-gray-200"
                       class="font-semibold text-gray-500 hover:text-primary"
-                      ><mat-icon class="mr-2">article</mat-icon> Orders</a
+                      ><mat-icon class="mr-2">article</mat-icon> Stock Managment</a
                     >
                     <a (click)="onLogout()" mat-list-item class="font-semibold text-gray-500 hover:text-primary"><mat-icon class="mr-2">logout</mat-icon> Logout</a>
                   </mat-nav-list>

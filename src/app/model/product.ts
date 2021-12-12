@@ -1,8 +1,16 @@
+import { DetailProduct } from "./DetailProduct";
+import { Stock } from "./stock";
+
+
 export class Product{
-  id: string;
-  title: string;
-  price: number;
-  description: string;
-  picture: string;
+  idproduit: number;
+  image: any;
+  code: string;
+  libelle: string;
+  prixUnitaire: number;
+ // rayon :any;
+  stockName : String;
+  categoryName : String;
+  description : String;
   
 }

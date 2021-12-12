@@ -1,9 +1,26 @@
 <div class="mt-32">
   <div class="container">
     <div class="grid grid-cols-12 gap-8">
-      <div class="col-span-12 md:col-span-7 xl:col-span-8 border p-5">
-        <a href="javascript:void(0)" class="category text-primary inline-block mb-5">Personal</a>
-        <h1 class="_title font-medium">Potential analysis - digitization for manufacturing companies</h1>
+      
+      <div class="col-span-12 md:col-span-7 xl:col-span-8 border p-12 ">
+        <span _ngcontent-yqh-c127="" href="javascript:void(0)" class="category text-primary inline-block mb-5 flex items-center pr-4 py-1 hover:text-primary text-primary-500" style="font-size:large;"><mat-icon _ngcontent-yqh-c127="" role="img" class="mat-icon notranslate mr-2 material-icons mat-icon-no-color " aria-hidden="true" data-mat-icon-type="font">more</mat-icon>#{{product.code}}</span>
+        <div class="flex flex-wrap sm:flex-nowrap sm:space-x-5 mt-3">
+
+        <h1 class="_title font-medium">{{product.libelle}}</h1>
+        <div  [ngClass]="{
+          'bg-red-500 text-red-500': product.categoryName === 'Electromeanger',
+          'bg-primary text-primary': product.categoryName === 'Alimentaire',
+          'bg-blue-500 text-yellow-500': product.categoryName === 'Quincaillerie'
+          
+         
+          
+          }" 
+          class=" w-2/12 font-medium text-[12px] bg-opacity-20 rounded-full px-3 inline-block font-bold py-[3px]"
+        >
+
+        <h6 style="font-size:large;">{{product.categoryName}}</h6> </div>
+       </div> 
+
         <ul class="product-meta flex flex-wrap items-center mt-8 mb-8">
           <li class="mr-4">
             <a class="flex items-center pr-4 py-1 hover:text-primary" href="javascript:void(0)"
@@ -22,61 +39,21 @@
             >
           </li>
         </ul>
-        <img class="w-full" src="assets/images/products/details.jpg" alt="img not found" />
+        
+        <img _ngcontent-qjd-c112="" mat-card-image="" class="mat-card-image"  style=" width:40%; margin: 0 0 20px;" alt="Industry marketing by subscription" src="{{definedUrl + product.idproduit }}">
         <div class="ll-content mt-8">
-          <h5>
-            We provide you with process mechanics for plastics and rubber technology (m / f / d) from Spain. Our candidates speak English
-            and would like to continue their respective careers in the plastics country.
-          </h5>
-          <h6>Problem</h6>
           <p>
-            It is difficult to find talented & motivated process mechanics in Germany. Lateral entrants from Germany can work, but the best
-            are those talents who have learned the process from scratch and can & want to imagine a career with it.
+            {{product.description}}
           </p>
-          <h6>General situation:</h6>
-          <p>
-            Many production companies in plastics processing in Germany have been experiencing a shortage of talented and motivated process
-            mechanics for years. Only a few small and medium-sized companies actively use the talent pool from other EU countries. Many
-            process mechanics in other EU countries would like to continue their careers in Germany. Small and medium-sized teams in
-            particular offer such talents a warm atmosphere and the chance to feel at home.
-          </p>
-          <h6>Our solution:</h6>
-          <p>
-            We are looking for suitable process mechanics from Spain who speak good English according to your requirement profile and
-            support you in welcoming your ideal candidate to Germany even during the pandemic. Basically, the European population under the
-            age of 30, and especially those with an affinity for technology and machines, speak good to very good English. You should
-            benefit.
-          </p>
-          <h6>What you get with this booking and for this price:</h6>
-          <ul>
-            <li>
-              The successful placement of a process mechanic (m / f / d) according to your requirement profile for permanent employment
-            </li>
-            <li>The placement of a process mechanic (m / f / d) exclusively from Spain with a work permit for foeign countries</li>
-            <li>Placement of talents with a good command of English</li>
-          </ul>
-          <blockquote>
-            And talk about chicken nuggets and bacon BBQ souces. AND talk about chicken nuggets and bacon BBQ souces. AND talk about chicken
-            nuggets and bacon BBQ souces
-          </blockquote>
-          <h6>Requirements:</h6>
-          <ol>
-            <li>
-              You have to create the prerequisites in the factory & company to integrate a process mechanic who initially only speaks
-              English.
-            </li>
-            <li>We need a realistic requirement profile that takes into account the professional or differences in training in Spain.</li>
-          </ol>
-          <blockquote>
-            And talk about chicken nuggets and bacon BBQ souces. AND talk about chicken nuggets and bacon BBQ souces. AND talk about chicken
-            nuggets and bacon BBQ souces
-          </blockquote>
+        
         </div>
       </div>
+    
+   
       <div class="col-span-12 md:col-span-5 xl:col-span-4">
         <div class="border">
           <div class="border-b text-center pt-10 pb-10">
-            <div class="text-accent text-4xl font-semibold">€3,000.00</div>
+            <div class="text-accent text-4xl font-semibold">€{{product.prixUnitaire}}</div>
             <div class="font-medium text-lg mt-3 text-gray-400 tracking-wider">Price</div>
           </div>
           <div class="border-b p-5">
