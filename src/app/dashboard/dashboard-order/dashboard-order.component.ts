@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FactureService} from '../../services/facture.service';
-import {Product} from '../../model/product';
-
+import { jsPDF } from 'jspdf';
+// @ts-ignore
+import autoTable from 'jspdf-autotable';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -32,7 +33,7 @@ export class DashboardOrderComponent implements OnInit {
       });
 
       if (!found) {
-        let prod = {idproduit: p.idproduit , libelle: p.libelle , prixUnitaire: p.prixUnitaire , quantity: 1 , totalPrice : p.prixUnitaire} ;
+        const prod = {idproduit: p.idproduit , libelle: p.libelle , prixUnitaire: p.prixUnitaire , quantity: 1 , totalPrice : p.prixUnitaire} ;
         this.fullList.push(prod);
       }
 
@@ -102,6 +103,32 @@ export class DashboardOrderComponent implements OnInit {
         this.factureService.addDetailFactures(data.idFacture, f.idproduit, f).subscribe((d: any) => console.log(d));
       }) ;
       this.clearList() ;
+
+      this.factureService.sendMail().subscribe() ;
+
     } ) ;
+  }
+
+  exportPdf(): void {
+
+    const doc = new jsPDF();
+
+    const columns = [['name', 'price', 'quantity' , 'full price']];
+    const data = [] ;
+    this.fullList.forEach((item) => {
+      data.push([item.libelle, item.prixUnitaire, item.quantity, item.totalPrice]) ;
+    }) ;
+
+
+
+    autoTable(doc, {
+      head: columns,
+      body: data,
+      didDrawPage: (dataArg) => {
+        doc.text('list of products', dataArg.settings.margin.left, 10);
+      }
+    });
+
+    doc.save('res.pdf') ;
   }
 }

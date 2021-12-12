@@ -57,4 +57,20 @@ export class FactureService {
     return this.http.get(url) ;
   }
 
+  getFactureStatMonth(): Observable<any> {
+    const url = 'http://localhost:8089/facture/stat/year' ;
+    return this.http.get(url) ;
+  }
+
+  sendMail(): Observable<any> {
+    const url = 'http://localhost:8089/send_mail' ;
+    return this.http.get(url) ;
+  }
+
+  // @ts-ignore
+  getFactures(): Observable<any> {
+    const url = 'http://localhost:8089/facture/retrieve-all-factures' ;
+    return this.http.get(url) ;
+  }
+
 }
