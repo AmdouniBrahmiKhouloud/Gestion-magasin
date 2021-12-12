@@ -21,7 +21,7 @@
 </div>
 <ng-container *ngIf="reviews">
   <div *ngFor="let review of reviews">
-    <mat-card class="mt-8">
+    <mat-card class="mt-8 flex justify-between">
       <div class="flex items-start">
         <div
           class="
@@ -50,10 +50,22 @@
             </ul>
             {{ starsDescriptions[review.rating - 1] }}</mat-card-subtitle
           >
+
           <div class="pt-4 pb-4 pr-4">
             {{ review.description }}
           </div>
         </div>
+      </div>
+      <div>
+        <button
+          class="mr-4"
+          *ngIf="userRole === 'admin'"
+          mat-icon-button
+          (click)="openConfirmationDialog(review.id)"
+          color="accent"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
       </div>
     </mat-card>
   </div>

@@ -14,6 +14,10 @@ export class ReviewService {
     return this.http.get<Review[]>(this.url);
   }
 
+  getListReviewsByProduct(id: number) {
+    return this.http.get<Review[]>(`${this.url}/product/${id}`);
+  }
+
   addNewReview(review: Review) {
     return this.http.post(this.url + '/new', review);
   }

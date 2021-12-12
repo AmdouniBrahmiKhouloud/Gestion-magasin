@@ -1,5 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
 import { Review } from 'src/app/model/review';
 import { User } from 'src/app/model/user';
 import { ReviewService } from 'src/app/services/review.service';
@@ -20,26 +22,74 @@ export interface DialogData {
   styleUrls: ['./review.component.scss']
 })
 export class ReviewComponent implements OnInit {
-  constructor(public dialog: MatDialog, private service: ReviewService) {}
+  constructor(
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog,
+    private service: ReviewService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
+  userRole: string = localStorage.getItem('loggedUserAccountCategory');
   reviews: Review[] = [];
   review: Review;
+  id: number;
+  rating: number;
+  stars: number[] = [5, 4, 3, 2, 1];
+  rateDescriptions: string;
+
   ngOnInit(): void {
-    this.service.getListReviews().subscribe(reviews => (this.reviews = reviews));
-    this.service.getReview(1, 1).subscribe((review: Review) => {
+    this.activatedRoute.params.subscribe(params => {
+      this.id = params['id'];
+    });
+    this.service.getListReviewsByProduct(this.id).subscribe(reviews => {
+      let x = 0;
+      reviews.map(review => {
+        x += review.rating;
+      });
+      this.rating = x / reviews.length;
+      this.tempRating = this.rating;
+      this.rateDescriptions = this.starsDescriptions[this.tempRating - 1];
+      return (this.reviews = reviews);
+    });
+    this.service.getReview(Number(localStorage.getItem('loggedUserId')), this.id).subscribe((review: Review) => {
       this.review = review;
     });
+    // this.rating = this.rating / this.reviews.length;
+    this.userRole = localStorage.getItem('loggedUserAccountCategory');
   }
   starsDescriptions: string[] = ['Hated it', "Didn't like it", 'Felt Just OK', 'Liked it', 'Loved it'];
-  stars: number[] = [5, 4, 3, 2, 1];
-  rating: number = 5;
-  tempRating: number = this.rating;
-  rateDescriptions: string = this.starsDescriptions[this.tempRating - 1];
+  tempRating: number;
 
   onHover(star) {
     this.tempRating = 0;
-    console.log(this.reviews);
     this.rateDescriptions = this.starsDescriptions[star - 1];
+  }
+
+  openConfirmationDialog(id) {
+    const dialogRef = this.dialog.open(ConfirmationDialog, {
+      disableClose: false
+    });
+    dialogRef.componentInstance.confirmMessage = 'Are you sure you want to delete?';
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.service.delete(id).subscribe(() => {
+          this.reviews = this.reviews.filter(item => item.id != id);
+        });
+        let x = 0;
+        this.reviews.map(review => {
+          x += review.rating;
+        });
+        this.rating = x / this.reviews.length;
+        this.tempRating = this.rating;
+        this.rateDescriptions = this.starsDescriptions[this.tempRating - 1];
+        this._snackBar.open('Review deleted successfully!!', 'Great!', {
+          horizontalPosition: 'center',
+          verticalPosition: 'top'
+        });
+      }
+      // dialogRef = null; MatSnackBarHorizontalPosition,
+    });
   }
 
   onHoverEnd() {
@@ -61,8 +111,8 @@ export class ReviewComponent implements OnInit {
       const review: Review = {
         rating: result.rating,
         description: result.description,
-        client: { idClient: 1 },
-        product: { idproduit: 1 }
+        client: { idClient: Number(localStorage.getItem('loggedUserId')) },
+        product: { idproduit: this.id }
       };
 
       if (result.id) {
@@ -75,10 +125,18 @@ export class ReviewComponent implements OnInit {
           });
           this.review = item;
         });
+        this._snackBar.open('Review added successfully!!', 'Great!', {
+          horizontalPosition: 'center',
+          verticalPosition: 'top'
+        });
       } else {
         this.service.addNewReview(review).subscribe((item: Review) => {
           this.reviews.push(item);
           this.review = item;
+        });
+        this._snackBar.open('Review updated successfully!!', 'Great!', {
+          horizontalPosition: 'center',
+          verticalPosition: 'top'
         });
       }
     });
@@ -125,4 +183,14 @@ export class AddReviewDialog {
   //     this.dialogRef.close();
   //   }
   // }
+}
+
+@Component({
+  selector: 'confirm-dialog',
+  templateUrl: 'confirmation-dialog.html'
+})
+export class ConfirmationDialog {
+  constructor(public dialogRef: MatDialogRef<ConfirmationDialog>) {}
+
+  public confirmMessage: string;
 }
