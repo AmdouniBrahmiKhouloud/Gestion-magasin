@@ -4,13 +4,11 @@ import { User } from '../model/user';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
-import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private toastr: ToastrService;
   private validUser: Boolean = false;
   user:User = new User();
   public curUser= new BehaviorSubject(this.user);

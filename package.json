@@ -35,7 +35,6 @@
     "ng2-search-filter": "^0.5.1",
     "ngx-pagination": "^5.1.1",
     "ngx-skeleton-loader": "^2.10.0",
-    "ngx-toastr": "^14.2.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "tsparticles": "^1.24.3",
