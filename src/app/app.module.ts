@@ -10,6 +10,7 @@ import { NgChartsModule } from 'ng2-charts';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 //import { Chart } from 'ng2-charts';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,6 +18,13 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, SharedModule, NgxSkeletonLoaderModule,
+    
+    
+    
+    
+    
+    ReactiveFormsModule,
+    FormsModule,
     NgChartsModule,MatPaginatorModule],
   providers: [],
   bootstrap: [AppComponent]

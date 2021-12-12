@@ -1,8 +1,9 @@
 import { User } from './user';
 
 export class Reclamation {
-  id: Number;
+  idReclamation: Number;
   detail: string;
-  sender: User;
+  client: User;
   date: Date;
+  reponse: string;
 }

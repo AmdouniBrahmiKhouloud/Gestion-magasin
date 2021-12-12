@@ -100,13 +100,46 @@
                       *ngIf="categorieClient!=null && categorieClient ==='admin'"
                       ><mat-icon class="mr-2">dashboard</mat-icon> Dashboard</a
                     >
+
                     <a
                       mat-list-item
-                      routerLink="/dashboard/profile"
+                      routerLink="/dashboard/liste-fournisseur"
                       routerLinkActive="bg-gray-200"
                       class="font-semibold text-gray-500 hover:text-primary"
-                      ><mat-icon class="mr-2">account_circle</mat-icon> View my profile</a
+                      ><mat-icon class="mr-2">list</mat-icon> Liste fournisseurs</a
                     >
+                    <a
+                      mat-list-item
+                      routerLink="/dashboard/ajout-fournisseur"
+                      routerLinkActive="bg-gray-200"
+                      class="font-semibold text-gray-500 hover:text-primary"
+                      ><mat-icon class="mr-2">library_add</mat-icon> Ajout fournisseur</a
+                    >
+
+                    <a
+                      mat-list-item
+                      routerLink="/dashboard/stats-fournisseurs"
+                      routerLinkActive="bg-gray-200"
+                      class="font-semibold text-gray-500 hover:text-primary"
+                      ><mat-icon class="mr-2"> bar_chart</mat-icon> Stats fournisseurs</a
+                    >
+
+                    <a
+                      mat-list-item
+                      routerLink="/dashboard/reclamation"
+                      routerLinkActive="bg-gray-200"
+                      class="font-semibold text-gray-500 hover:text-primary"
+                      ><mat-icon class="mr-2">report</mat-icon> Réclamation</a
+                    >
+
+                    <a
+                      mat-list-item
+                      routerLink="/dashboard/liste-reclamations"
+                      routerLinkActive="bg-gray-200"
+                      class="font-semibold text-gray-500 hover:text-primary"
+                      ><mat-icon class="mr-2">report</mat-icon> Liste des Réclamations</a
+                    >
+
                     <a
                       mat-list-item
                       routerLink="/dashboard/product-list"
@@ -128,7 +161,9 @@
                       class="font-semibold text-gray-500 hover:text-primary"
                       ><mat-icon class="mr-2">article</mat-icon> Stock Managment</a
                     >
-                    <a (click)="onLogout()" mat-list-item class="font-semibold text-gray-500 hover:text-primary"><mat-icon class="mr-2">logout</mat-icon> Logout</a>
+                    <a (click)="onLogout()" mat-list-item class="font-semibold text-gray-500 hover:text-primary"
+                      ><mat-icon class="mr-2">logout</mat-icon> Logout</a
+                    >
                   </mat-nav-list>
                 </div>
               </div>

@@ -1,5 +1,8 @@
 export class Fournisseur {
-  id: Number;
+  idFournisseur: string;
   code: string;
-  label: string;
+  libelle: string;
+  adresse: string;
+  numero: string;
+  email: string;
 }

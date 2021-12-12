@@ -1,3 +1,39 @@
+![](http://imgur.com/t3teAxi.png)
+### :handbag: A simple ecommerce website using angular and spring boot
+## Features
+
+<b>User Features by Khouloud Amdouni Brahmi </b>
+
+| Feature  |  Coded?       | Description  |
+|----------|:-------------:|:-------------|
+| Add a user | &#10004; | Ability of Add a user  |
+| List users | &#10004; | Ability of List Users |
+| Edit a user | &#10004; | Ability of Edit a User Profil |
+| Delete a user | &#10004; | Ability of Delete a User |
+| login| &#10004; | Ability of login  |
+
+<b>Products Features by Eya Thebti</b>
+
+| Feature  |  Coded?       | Description  |
+|----------|:-------------:|:-------------|
+| Add a Product | &#10004; | Ability of Add a Product on the System |
+| List Products | &#10004; | Ability of List Products |
+| Edit a Product | &#10004; | Ability of Edit a Product |
+| Delete a Product | &#10004; | Ability of Delete a Product |
+| Stock | &#10004; | Ability of Update the Stock |
+| Stock History | &#10004; | Ability to see the Stock History |
+
+
+<b>Products Features by Saif Smairi</b>
+
+| Feature  |  Coded?       | Description  |
+|----------|:-------------:|:-------------|
+| Add a provider | &#10004; | Ability of Add a provider on the System |
+| List providers | &#10004; | Ability of List providers |
+| Edit a provider | &#10004; | Ability of Edit a provider |
+| Delete a provider | &#10004; | Ability of Delete a provider |
+
+
 # Lieblings
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.2.

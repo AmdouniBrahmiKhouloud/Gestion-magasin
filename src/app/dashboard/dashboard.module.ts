@@ -11,7 +11,6 @@ import { DashboardSavedItemComponent } from './dashboard-saved-item/dashboard-sa
 import { DashboardProfileComponent } from './dashboard-profile/dashboard-profile.component';
 import { DashboardOrderComponent } from './dashboard-order/dashboard-order.component';
 import { DashboardUpdateProfilComponent } from './dashboard-update-profil/dashboard-update-profil.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -21,7 +20,6 @@ import { SearchfilterPipe } from './searchfilter.pipe';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { NgChartsModule } from 'ng2-charts';
 import { AddProductComponent } from './add-product/add-product.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListStockComponent } from './list-stock/list-stock.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { AddStockComponent } from './add-stock/add-stock.component';
@@ -39,6 +37,19 @@ import { StatProductComponent } from './stat-product/stat-product.component';
 //import { Chart } from 'chart.js';
 
 
+import { DashboardAjoutFournisseurComponent } from './dashboard-ajout-fournisseur/dashboard-ajout-fournisseur.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatRippleModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DashboardListeFournisseurComponent } from './dashboard-liste-fournisseur/dashboard-liste-fournisseur.component';
+import { UpdateDialogFournisseurComponent } from './dashboard-liste-fournisseur/update-dialog-fournisseur/update-dialog-fournisseur.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { ReclamationComponent } from './reclamation/reclamation.component';
+import { DashboardProduitParFournisseurComponent } from './dashboard-produit-par-fournisseur/dashboard-produit-par-fournisseur.component';
+import { DashboardStatsFournisseursComponent } from './dashboard-stats-fournisseurs/dashboard-stats-fournisseurs.component';
+import { ListeReclamationComponent } from './liste-reclamation/liste-reclamation.component';
 
 @NgModule({
   declarations: [
@@ -56,8 +67,15 @@ import { StatProductComponent } from './stat-product/stat-product.component';
     AddDetailProduitComponent,
     ShowProductComponent,
     DashboardUpdateProfilComponent,
+    ReclamationComponent,
     SearchfilterPipe,
-    StatProductComponent
+    StatProductComponent,
+    DashboardAjoutFournisseurComponent,
+    DashboardListeFournisseurComponent,
+    UpdateDialogFournisseurComponent,
+    DashboardProduitParFournisseurComponent,
+    DashboardStatsFournisseursComponent,
+    ListeReclamationComponent,
   ],
   imports: [
     MatSnackBarModule,
@@ -75,6 +93,26 @@ import { StatProductComponent } from './stat-product/stat-product.component';
     MatSlideToggleModule,
     NgChartsModule,
     MatPaginatorModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatRippleModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatInputModule,
+    FormsModule
+  ],
+  exports: [
+    CommonModule,
+    DashboardRoutingModule,
+    SharedModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatRippleModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    MatInputModule
   ]
 })
 // NgChartsModule,Chart
