@@ -2,9 +2,28 @@
 	<!-- User Start -->
 	<div class="flex flex-wrap">
 		<div class="flex space-x-3 bg-primary rounded-md px-5 py-3 w-full sm:w-1/2">
-			<div class="w-16 h-16 rounded-full overflow-hidden shadow-md">
+			<!--<div class="w-16 h-16 rounded-full overflow-hidden shadow-md">
 				<img src="assets/images/user-128x128.jpg" alt="" class="w-full h-full object-cover">
-			</div>
+			</div>-->
+      <div
+        class="
+            m-1
+            mr-6
+            w-16
+            h-16
+            relative
+            flex
+            justify-center
+            items-center
+            rounded-full
+            bg-yellow-300
+            text-xl text-white
+            uppercase
+            flex-none
+          "
+      >
+        {{ user.nom[0]+''+user.prenom[0]}}
+      </div>
 			<div class="text-white">
 				<h5>{{user?.nom +' ' + user?.prenom}}</h5>
 				<p class="leading-normal text-white">

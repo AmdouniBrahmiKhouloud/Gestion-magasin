@@ -25,4 +25,19 @@ export class UserService {
   deleteClient(id: number){
     return this.http.delete(this.url +'/remove-client/' +id)
   }
+  getOrdinaire(){
+    return this.http.get<number>(this.url + '/ordinaire')
+}
+getPremuim(){
+  return this.http.get<number>(this.url + '/premuim')
+}
+getFidele(){
+  return this.http.get<number>(this.url + '/fidele')
+}
+getActivateAccount(){
+  return this.http.get<number>(this.url + '/active-account')
+}
+  getDesactivateAccount(){
+    return this.http.get<number>(this.url + '/desactive-account')
+  }
 }
