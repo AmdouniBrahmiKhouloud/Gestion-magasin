@@ -13,9 +13,9 @@
   </select>
  
 
-  <select  class="border border-gray-100 p-1 px-1 w-full sm:w-1/6 rounded-sm" id="fournisseursName" [(ngModel)] = "stock.fournisseursName" name="fournisseursName" class="form-control">
+  <select  class="border border-gray-100 p-1 px-1 w-full sm:w-1/6 rounded-sm" id="fournisseursName" [(ngModel)] = "stock.fournisseursName" name="fournisseursName" class="form-control" required #fn2="ngModel" >
     <option>providers</option>
-     <option *ngFor="">{{stock.fournisseursName}}</option>
+     <option *ngFor="let stock of fournisseurs">{{stock.libelle}}</option>
    </select>
   
   </div> 
