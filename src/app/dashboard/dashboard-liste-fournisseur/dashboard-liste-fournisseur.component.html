@@ -1,6 +1,6 @@
 <div>
   <div class="filter flex items-center mb-5">
-    <h5>Liste Des Fournisseurs</h5>
+    <h5>List of providers</h5>
     <div class="flex items-center ml-auto">
       <button [class.text-accent]="view === 'grid'" (click)="view = 'grid'" mat-icon-button class="view__btn">
         <mat-icon>grid_view</mat-icon>
@@ -14,9 +14,9 @@
     <div *ngIf="view === 'list'" class="table-inside">
       <div class="flex flex-col border ltLg:responsive">
         <div class="flex items-center p-4 border-b hover:bg-blue-100">
-          <div class="w-6/12 font-medium"><div class="pl-16 ml-3">Libelle</div></div>
+          <div class="w-6/12 font-medium"><div class="pl-16 ml-3">Label</div></div>
           <div class="w-2/12 font-medium">Code</div>
-          <div class="w-2/12 font-medium text-center">Numéro</div>
+          <div class="w-2/12 font-medium text-center">Number</div>
           <div class="w-2/12 font-medium">Adresse</div>
 
           <div class="w-1/12"></div>
@@ -54,7 +54,7 @@
               </button>
               <button mat-menu-item [routerLink]="['/dashboard/fournisseurProducts', product.idFournisseur]">
                 <mat-icon>list_alt</mat-icon>
-                <span>Liste des produits</span>
+                <span>Products list</span>
               </button>
             </mat-menu>
           </div>

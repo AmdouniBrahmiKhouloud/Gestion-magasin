@@ -88,7 +88,7 @@ export class AddProductComponent implements OnInit {
       showConfirmButton: false,
       timer: 1500
     });
-    // this.goToProductList();
+    this.goToProductList();
   }
 
   saveProduct() {
