@@ -1,11 +1,12 @@
-
+import { Fournisseur } from './fournisseur';
 
 export class Stock {
   idstock: number;
-  fournisseursName: string; 
-  productsName : string;
+  fournisseursName: string;
+  idfourn: number;
+  fournisseur: Fournisseur;
+  productsName: string;
   qte: number;
   qteMin: string;
-  libelleStock:string;
-  
+  libelleStock: string;
 }
