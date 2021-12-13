@@ -20,38 +20,39 @@ export class AuthService {
   }
   login(email:string, password: string){
     this.getUser(email,password).subscribe((data:User)=>{
-
       if (data == null){
-        console.log(data)
-        //.error()}
+        //console.log(data)
         alert("please give a valid email and password")
-        //this.toastr.error()
         }
       else {
-        this.user.idClient=data.idClient;
-        this.user.nom=data.nom;
-        this.user.prenom=data.prenom;
-        this.user.email=data.email;
-        this.user.password=data.password;
-        this.user.dateNaissance=data.dateNaissance;
-        this.user.categorieClient=data.categorieClient;
-        this.user.profession=data.profession;
-        if((this.user.email===email)){
-          this.validUser= true;
-          localStorage.setItem('loggedUserId',String(this.user.idClient));
-          localStorage.setItem('loggedUserFirstName',this.user.nom);
-          localStorage.setItem('loggedUserLastName',this.user.prenom);
-          localStorage.setItem('loggedUserEmail',this.user.email);
-          localStorage.setItem('loggedUserBirthDate',String(this.user.dateNaissance));
-          localStorage.setItem('loggedUserAccountCategory',this.user.categorieClient);
-          localStorage.setItem('loggedUserProfession',this.user.profession);
-          localStorage.setItem('isloggedIn',String(this.validUser));
-          this.curUser.next(this.user);
-          if (this.user.categorieClient === "admin"){
-            this.router.navigate(['/dashboard']);
-          }else {
-            this.router.navigate(['']);
+        if (data.active === true){
+          this.user.idClient=data.idClient;
+          this.user.nom=data.nom;
+          this.user.prenom=data.prenom;
+          this.user.email=data.email;
+          this.user.password=data.password;
+          this.user.dateNaissance=data.dateNaissance;
+          this.user.categorieClient=data.categorieClient;
+          this.user.profession=data.profession;
+          if((this.user.email===email)){
+            this.validUser= true;
+            localStorage.setItem('loggedUserId',String(this.user.idClient));
+            localStorage.setItem('loggedUserFirstName',this.user.nom);
+            localStorage.setItem('loggedUserLastName',this.user.prenom);
+            localStorage.setItem('loggedUserEmail',this.user.email);
+            localStorage.setItem('loggedUserBirthDate',String(this.user.dateNaissance));
+            localStorage.setItem('loggedUserAccountCategory',this.user.categorieClient);
+            localStorage.setItem('loggedUserProfession',this.user.profession);
+            localStorage.setItem('isloggedIn',String(this.validUser));
+            this.curUser.next(this.user);
+            if (this.user.categorieClient === "admin"){
+              this.router.navigate(['/dashboard']);
+            }else {
+              this.router.navigate(['']);
+            }
           }
+        }else {
+          alert("please active your account")
         }
       }
     });

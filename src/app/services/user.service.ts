@@ -40,4 +40,28 @@ getActivateAccount(){
   getDesactivateAccount(){
     return this.http.get<number>(this.url + '/desactive-account')
   }
+  resetPassword(email:String, newPassword:String){
+    return this.http.get<boolean>(this.url + '/reset-password/'+email+'/'+newPassword)
+  }
+  updatPassword(id: number, password: string , newPassword :string){
+    return this.http.get<boolean>(this.url + '/modify-password/'+id+'/'+password+'/'+newPassword)
+  }
+  getDocteur(){
+    return this.http.get<number>(this.url + '/docteur')
+  }
+  getIngenieur(){
+    return this.http.get<number>(this.url + '/ingenieur')
+  }
+  getEtudiant(){
+    return this.http.get<number>(this.url + '/etudiant')
+  }
+  getCommercial(){
+    return this.http.get<number>(this.url + '/commercial')
+  }
+  getCadre(){
+    return this.http.get<number>(this.url + '/cadre')
+  }
+  getAutre(){
+    return this.http.get<number>(this.url + '/autre')
+  }
 }

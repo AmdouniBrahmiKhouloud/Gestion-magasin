@@ -50,6 +50,7 @@ import { ReclamationComponent } from './reclamation/reclamation.component';
 import { DashboardProduitParFournisseurComponent } from './dashboard-produit-par-fournisseur/dashboard-produit-par-fournisseur.component';
 import { DashboardStatsFournisseursComponent } from './dashboard-stats-fournisseurs/dashboard-stats-fournisseurs.component';
 import { ListeReclamationComponent } from './liste-reclamation/liste-reclamation.component';
+import { DashboardUpdateUserComponent } from './dashboard-update-user/dashboard-update-user.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { ListeReclamationComponent } from './liste-reclamation/liste-reclamation
     DashboardProduitParFournisseurComponent,
     DashboardStatsFournisseursComponent,
     ListeReclamationComponent,
+    DashboardUpdateUserComponent,
   ],
   imports: [
     MatSnackBarModule,

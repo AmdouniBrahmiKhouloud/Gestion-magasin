@@ -26,10 +26,54 @@
             ><mat-icon class="mr-2">account_circle</mat-icon> View my profile</a
           >
           <a
-                      mat-list-item
+            mat-list-item
+            routerLink="/dashboard/liste-fournisseur"
+            routerLinkActive="bg-gray-200"
+            class="font-semibold text-gray-500 hover:text-primary"
+            *ngIf="categorieClient!=null && categorieClient ==='admin'"
+          ><mat-icon class="mr-2">list</mat-icon> Liste fournisseurs</a
+          >
+          <a
+            mat-list-item
+            routerLink="/dashboard/ajout-fournisseur"
+            routerLinkActive="bg-gray-200"
+            class="font-semibold text-gray-500 hover:text-primary"
+            *ngIf="categorieClient!=null && categorieClient ==='admin'"
+          ><mat-icon class="mr-2">library_add</mat-icon> Ajout fournisseur</a
+          >
+
+          <a
+            mat-list-item
+            routerLink="/dashboard/stats-fournisseurs"
+            routerLinkActive="bg-gray-200"
+            class="font-semibold text-gray-500 hover:text-primary"
+            *ngIf="categorieClient!=null && categorieClient ==='admin'"
+          ><mat-icon class="mr-2"> bar_chart</mat-icon> Stats fournisseurs</a
+          >
+
+          <a
+            mat-list-item
+            routerLink="/dashboard/reclamation"
+            routerLinkActive="bg-gray-200"
+            class="font-semibold text-gray-500 hover:text-primary"
+            *ngIf="categorieClient!=null && categorieClient !='admin'"
+          ><mat-icon class="mr-2">report</mat-icon> Réclamation</a
+          >
+
+          <a
+            mat-list-item
+            routerLink="/dashboard/liste-reclamations"
+            routerLinkActive="bg-gray-200"
+            class="font-semibold text-gray-500 hover:text-primary"
+            *ngIf="categorieClient!=null && categorieClient ==='admin'"
+          ><mat-icon class="mr-2">report</mat-icon> Liste des Réclamations</a
+          >
+
+          <a mat-list-item
                       routerLink="/dashboard/product-list"
                       routerLinkActive="bg-gray-200"
                       class="font-semibold text-gray-500 hover:text-primary"
+             *ngIf="categorieClient!=null && categorieClient ==='admin'"
                       ><mat-icon class="mr-2">list</mat-icon> Product Managment</a
                     >
                     <a
@@ -37,6 +81,7 @@
                     routerLink="/dashboard/stat-product"
                     routerLinkActive="bg-gray-200"
                     class="font-semibold text-gray-500 hover:text-primary"
+                    *ngIf="categorieClient!=null && categorieClient ==='admin'"
                     >
                     <mat-icon class="mr-2">bar_chart</mat-icon> Stat of Products</a
                   >
@@ -45,6 +90,7 @@
                       routerLink="/dashboard/list-stock"
                       routerLinkActive="bg-gray-200"
                       class="font-semibold text-gray-500 hover:text-primary"
+                      *ngIf="categorieClient!=null && categorieClient ==='admin'"
                       ><mat-icon class="mr-2">article</mat-icon> Stock Managment</a
                     >
           <a (click)="onLogout()" mat-list-item class="font-semibold text-gray-500 hover:text-primary"><mat-icon class="mr-2">logout</mat-icon> Logout</a>
@@ -112,6 +158,7 @@
                       routerLink="/dashboard/liste-fournisseur"
                       routerLinkActive="bg-gray-200"
                       class="font-semibold text-gray-500 hover:text-primary"
+                      *ngIf="categorieClient!=null && categorieClient ==='admin'"
                       ><mat-icon class="mr-2">list</mat-icon> Liste fournisseurs</a
                     >
                     <a
@@ -119,6 +166,7 @@
                       routerLink="/dashboard/ajout-fournisseur"
                       routerLinkActive="bg-gray-200"
                       class="font-semibold text-gray-500 hover:text-primary"
+                      *ngIf="categorieClient!=null && categorieClient ==='admin'"
                       ><mat-icon class="mr-2">library_add</mat-icon> Ajout fournisseur</a
                     >
 
@@ -127,6 +175,7 @@
                       routerLink="/dashboard/stats-fournisseurs"
                       routerLinkActive="bg-gray-200"
                       class="font-semibold text-gray-500 hover:text-primary"
+                      *ngIf="categorieClient!=null && categorieClient ==='admin'"
                       ><mat-icon class="mr-2"> bar_chart</mat-icon> Stats fournisseurs</a
                     >
 
@@ -135,6 +184,7 @@
                       routerLink="/dashboard/reclamation"
                       routerLinkActive="bg-gray-200"
                       class="font-semibold text-gray-500 hover:text-primary"
+                      *ngIf="categorieClient!=null && categorieClient !='admin'"
                       ><mat-icon class="mr-2">report</mat-icon> Réclamation</a
                     >
 
@@ -143,6 +193,7 @@
                       routerLink="/dashboard/liste-reclamations"
                       routerLinkActive="bg-gray-200"
                       class="font-semibold text-gray-500 hover:text-primary"
+                      *ngIf="categorieClient!=null && categorieClient ==='admin'"
                       ><mat-icon class="mr-2">report</mat-icon> Liste des Réclamations</a
                     >
 
@@ -151,6 +202,7 @@
                       routerLink="/dashboard/product-list"
                       routerLinkActive="bg-gray-200"
                       class="font-semibold text-gray-500 hover:text-primary"
+                      *ngIf="categorieClient!=null && categorieClient ==='admin'"
                       ><mat-icon class="mr-2">list</mat-icon> Product Managment</a
                     >
                     <a
@@ -158,6 +210,7 @@
                     routerLink="/dashboard/stat-product"
                     routerLinkActive="bg-gray-200"
                     class="font-semibold text-gray-500 hover:text-primary"
+                    *ngIf="categorieClient!=null && categorieClient ==='admin'"
                     ><mat-icon class="mr-2">bar_chart</mat-icon> Stat of Products</a
                   >
                     <a
@@ -165,6 +218,7 @@
                       routerLink="/dashboard/list-stock"
                       routerLinkActive="bg-gray-200"
                       class="font-semibold text-gray-500 hover:text-primary"
+                      *ngIf="categorieClient!=null && categorieClient ==='admin'"
                       ><mat-icon class="mr-2">article</mat-icon> Stock Managment</a
                     >
                     <a (click)="onLogout()" mat-list-item class="font-semibold text-gray-500 hover:text-primary"

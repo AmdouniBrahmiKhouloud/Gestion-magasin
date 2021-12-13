@@ -72,10 +72,11 @@
             <mat-icon>sort</mat-icon><span class="text-gray-800">Account Category</span>
 					</th>
 					<th class="text-right">Active</th>
+          <th class='text-right'>Action</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr *ngFor="let user of list  | orderBy: key: reverse | paginate: { itemsPerPage: 3, currentPage: p }" class="border">
+				<tr *ngFor="let user of list  | orderBy: key: reverse | paginate: { itemsPerPage: 4, currentPage: p }" class="border">
 					<td>
             <span>{{user?.prenom}}</span>
 					</td>
@@ -102,21 +103,23 @@
 					</td>
 					<td class="text-right">
             <mat-slide-toggle checked='{{user?.active}}' disabled></mat-slide-toggle>
-					<!--	<button class="action_icon__btn" mat-icon-button [matMenuTriggerFor]="menu">
-							<mat-icon>more_vert</mat-icon>
-						</button>
-						<mat-menu #menu="matMenu" xposition="before">
-							<button mat-menu-item>
-                <mat-icon class="_edit_icon mr-2">edit</mat-icon>
-								<span>Edit</span>
-							</button>
-							<button mat-menu-item (click)="delete(user)"
-                      [disabled]="user.categorieClient=='admin'">
-								<mat-icon>delete</mat-icon>
-								<span>Delete</span>
-							</button>
-						</mat-menu>-->
 					</td>
+          <td>
+            <button class="action_icon__btn" mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xposition="before">
+              <button mat-menu-item (click)='updateUser(user?.idClient)'>
+                <mat-icon class="_edit_icon mr-2">edit</mat-icon>
+                <span>Edit</span>
+              </button>
+              <button mat-menu-item (click)="delete(user)"
+                      [disabled]="user.categorieClient=='admin'">
+                <mat-icon>delete</mat-icon>
+                <span>Delete</span>
+              </button>
+            </mat-menu>
+          </td>
 				</tr>
 			</tbody>
       <br>
