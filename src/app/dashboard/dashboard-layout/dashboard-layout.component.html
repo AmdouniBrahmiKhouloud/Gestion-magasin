@@ -24,7 +24,7 @@
           >
           <a
             mat-list-item
-            routerLink="/dashboard/saved-items"
+            [routerLink]="'/dashboard/saved-items'"
             routerLinkActive="bg-gray-200"
             class="font-semibold text-gray-500 hover:text-primary"
             ><mat-icon class="mr-2">list</mat-icon> Saved Items</a
@@ -66,7 +66,7 @@
           </div>
         </div>
       </header>
-      
+
       <div>
         <div class="container">
           <div class="grid grid-cols-12 gap-8">
@@ -95,18 +95,15 @@
                     >
                     <a
                       mat-list-item
-                      routerLink="/dashboard/saved-items"
+                      [routerLink]="'/dashboard/saved-items'"
                       routerLinkActive="bg-gray-200"
-                      class="font-semibold text-gray-500 hover:text-primary"
-                      ><mat-icon class="mr-2">list</mat-icon> Saved Items</a
-                    >
-                    <a
-                      mat-list-item
+                      class="font-semibold text-gray-500 hover:text-primary">
+                      <mat-icon class="mr-2">list</mat-icon> Prodcuts</a>
+                    <a mat-list-item
                       routerLink="/dashboard/orders"
                       routerLinkActive="bg-gray-200"
                       class="font-semibold text-gray-500 hover:text-primary"
-                      ><mat-icon class="mr-2">article</mat-icon> Orders</a
-                    >
+                      ><mat-icon class="mr-2">article</mat-icon> Stat</a>
                     <a (click)="onLogout()" mat-list-item class="font-semibold text-gray-500 hover:text-primary"><mat-icon class="mr-2">logout</mat-icon> Logout</a>
                   </mat-nav-list>
                 </div>
