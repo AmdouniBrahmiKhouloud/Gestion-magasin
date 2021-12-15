@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
   }
 
   signin(myForm: FormGroup) {
-    //console.log(myForm.value);
     if(this.auth.login(myForm.get('email').value, myForm.get('password').value)){
     }
   }

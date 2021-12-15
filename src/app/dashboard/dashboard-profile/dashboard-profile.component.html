@@ -33,52 +33,39 @@
 	</div>
 	<!-- User End -->
 	<!-- User Meta Start -->
-  <!--<div class="border bg-white mt-8 rounded-md">
-    <div class="flex p-4 bg-gray-200">
-      <h6 class="text-normal">Primary Information</h6>
-      <button class="text-blue-400 hover:text-accent ml-auto flex items-center">
-        <mat-icon class="_edit_icon mr-2">edit</mat-icon>
-        Edit</button>
-    </div>
-    <div class="flex flex-wrap p-4">
-      <div class="w-full sm:w-1/2">
-        <div class="ll-dataset">
-          <div class="ll-dataset__label">
-            Email:
-          </div>
-          <div class="ll-dataset__value">
-            example@mail.com
+  <div class="border bg-white mt-8 rounded-md">
+    <form [formGroup]='myForm' (ngSubmit)='updatePassword(myForm)'>
+      <div class="flex p-4 bg-gray-200">
+        <h6 class="text-normal">Primary Information</h6>
+        <button class="text-blue-400 hover:text-accent ml-auto flex items-center" type='submit' [disabled]='myForm.invalid'>
+          <mat-icon class="_edit_icon mr-2">edit</mat-icon>
+          Edit</button>
+      </div>
+      <div class="flex flex-wrap p-4">
+        <div class="w-full sm:w-1/2">
+          <div class="ll-dataset">
+            <div class="ll-dataset__label">
+              Current Password:
+            </div>
+            <div class="ll-dataset__value">
+              <input type='password' placeholder='Current Password' formControlName='currentPassword'>
+            </div>
           </div>
         </div>
-        <div class="ll-dataset mt-4">
-          <div class="ll-dataset__label">
-            Number:
-          </div>
-          <div class="ll-dataset__value">
-            +880-12121-212123
+        <div class="w-full sm:w-1/2 mt-4 sm:mt-0">
+          <div class="ll-dataset">
+            <div class="ll-dataset__label">
+              New Password:
+            </div>
+            <div class="ll-dataset__value">
+              <input type='password' placeholder='New Password' formControlName='newPassword'>
+            </div>
           </div>
         </div>
       </div>
-      <div class="w-full sm:w-1/2 mt-4 sm:mt-0">
-        <div class="ll-dataset">
-          <div class="ll-dataset__label">
-            Username:
-          </div>
-          <div class="ll-dataset__value">
-            abraham_lincoln
-          </div>
-        </div>
-        <div class="ll-dataset mt-4">
-          <div class="ll-dataset__label">
-            Business Role:
-          </div>
-          <div class="ll-dataset__value">
-            Buyer
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>-->
+    </form>
+
+  </div>
   <!-- User Meta End -->
 	<!-- User Meta Start -->
 	<div class="border bg-white mt-8 rounded-md">

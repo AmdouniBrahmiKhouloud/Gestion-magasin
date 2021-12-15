@@ -21,6 +21,7 @@ import { UpdateStockComponent } from './update-stock/update-stock.component';
 import { DashboardStatsFournisseursComponent } from './dashboard-stats-fournisseurs/dashboard-stats-fournisseurs.component';
 import { ListeReclamationComponent } from './liste-reclamation/liste-reclamation.component';
 import { ReclamationComponent } from './reclamation/reclamation.component';
+import { DashboardUpdateUserComponent } from './dashboard-update-user/dashboard-update-user.component';
 
 const DashboardChildrenRoute: Routes = [
   {
@@ -100,6 +101,10 @@ const DashboardChildrenRoute: Routes = [
   {
     path: 'fournisseurProducts/:id',
     component: DashboardProduitParFournisseurComponent
+  },
+  {
+    path: 'update-user/:id',
+    component: DashboardUpdateUserComponent
   },
 
   {
