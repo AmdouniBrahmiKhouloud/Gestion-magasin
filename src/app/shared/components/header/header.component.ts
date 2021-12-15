@@ -3,6 +3,7 @@ import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@a
 import { menuList as staticMenuList } from '../../data/menus';
 import { AuthService } from '../../../services/auth.service';
 import { User } from '../../../model/user';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'll-header',
@@ -10,13 +11,14 @@ import { User } from '../../../model/user';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  @Input() numbersOrder ;
   @Input() topFixed: boolean;
   @Output() toggleSidenav = new EventEmitter();
   isScrolled: boolean;
   menuList = [];
   isLessThenLargeDevice;
   user:User = new User();
-  constructor(private breakpointObserver: BreakpointObserver,private auth:AuthService) {}
+  constructor(private breakpointObserver: BreakpointObserver,private auth:AuthService , private route: Router) {}
 
   ngOnInit(): void {
     this.menuList = staticMenuList;
@@ -34,5 +36,9 @@ export class HeaderComponent implements OnInit {
 
   onLogout() {
     this.auth.logOut();
+  }
+
+  makeToOrders() {
+    this.route.navigate(['/dashboard/orders']) ;
   }
 }

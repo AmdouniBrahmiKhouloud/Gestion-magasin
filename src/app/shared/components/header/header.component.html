@@ -25,11 +25,11 @@
       >
         <mat-icon>menu</mat-icon>
       </button>
-      <button
+      <button (click)="makeToOrders()"
         *ngIf="user.nom!=null && user.categorieClient != 'admin'"
         class="_sidenav__toggler ml-auto md:ml-3 ms-sm-3"
         mat-icon-button
-      >0
+      > {{numbersOrder}}
         <mat-icon>add_shopping_cart</mat-icon>
       </button>
       <div class="hidden items-center md:flex ml-auto" *ngIf="user.nom ==null">

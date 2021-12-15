@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { NotificationsService } from 'angular2-notifications';
 import { Product } from 'src/app/model/product';
 import { DetailProductService } from 'src/app/services/detailProduit.service';
 import { ProductService } from 'src/app/services/product.service';
 import { productsDB } from '../../shared/data/products';
+import {FactureService} from '../../services/facture.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'll-product-list',
@@ -31,7 +32,7 @@ export class ProductListComponent implements OnInit {
     }, 8000)
   }*/
   ngOnInit(): void{
-    /*this.productService.getListProduct().subscribe( (data : Product[]) => { console.log(data) 
+    /*this.productService.getListProduct().subscribe( (data : Product[]) => { console.log(data)
     this.products = data;});*/
     this.products = productsDB.Product;
     this.productService.getListProduct().subscribe(
@@ -41,7 +42,7 @@ export class ProductListComponent implements OnInit {
       }
     )
 
-   
+
   }
   showProduct(id:number){
     this.route.navigate(['/products/detail-produit',id]);
@@ -91,7 +92,7 @@ export class ProductListComponent implements OnInit {
          case "mod3":
           this.displayByCat3();
            break;
-    
+
     }
   }
 
@@ -103,7 +104,7 @@ export class ProductListComponent implements OnInit {
       case "mod2":
         this.displayDesc();
          break;
-    
+
     }
   }
   Search(){
@@ -114,8 +115,8 @@ export class ProductListComponent implements OnInit {
       this.products=this.products.filter(res =>{return res.libelle.toLocaleLowerCase().match(this.libelle.toLocaleLowerCase())});
     }
   }
-  
 
 
-       
+
+
 }
