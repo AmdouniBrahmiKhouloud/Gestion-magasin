@@ -64,7 +64,8 @@ export class FactureService {
   }
 
   sendMail(): Observable<any> {
-    const url = 'http://localhost:8089/send_mail' ;
+    const id = Number(localStorage.getItem('loggedUserId')) ;
+    const url = 'http://localhost:8089/send_mail/' + id ;
     return this.http.get(url) ;
   }
 
