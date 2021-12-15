@@ -2,9 +2,9 @@ import { User } from './user';
 import { Product } from './product';
 
 export class Review {
-  id: number;
+  id?: number;
   rating: number;
   description: string;
-  user: User;
+  client: User;
   product: Product;
 }

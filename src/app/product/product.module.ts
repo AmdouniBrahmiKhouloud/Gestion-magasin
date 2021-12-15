@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { NgParticlesModule } from 'ng-particles';
 import { ProductRoutingModule } from './product-routing.module';
 import { SharedModule } from '../shared/shared.module';
@@ -15,11 +15,21 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from '../app.component';
 
+import { AddReviewDialog, ReviewComponent } from './product-details/Review/review.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
-  declarations: [ProductListComponent, ProductDetailsComponent, ProductHeroComponent ],
+  declarations: [ProductListComponent, ProductDetailsComponent, ProductHeroComponent, ReviewComponent, AddReviewDialog],
   imports: [
+    MatSnackBarModule,
+    FormsModule,
+    MatDialogModule,
+    MatInputModule,
+    MatButtonModule,
     CommonModule,
     ProductRoutingModule,
     SharedModule,
