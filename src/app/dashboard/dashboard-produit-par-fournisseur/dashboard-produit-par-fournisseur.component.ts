@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MailFournisseur } from 'src/app/model/mailFournisseur';
 import { Product } from 'src/app/model/product';
 import { FournisseurService } from 'src/app/services/fournisseur.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-dashboard-produit-par-fournisseur',
@@ -12,8 +13,15 @@ import { FournisseurService } from 'src/app/services/fournisseur.service';
 export class DashboardProduitParFournisseurComponent implements OnInit {
   id;
   products;
+  definedUrl = this.productService.url + 'Imgproduits/';
+
   mf = new MailFournisseur();
-  constructor(private _Activatedroute: ActivatedRoute, private fournisseurService: FournisseurService) {}
+  constructor(
+    private productService: ProductService,
+    private _Activatedroute: ActivatedRoute,
+    private fournisseurService: FournisseurService,
+    private route: Router
+  ) {}
 
   ngOnInit(): void {
     this._Activatedroute.paramMap.subscribe(params => {
@@ -21,6 +29,10 @@ export class DashboardProduitParFournisseurComponent implements OnInit {
       this.listeProdPerFournisseur(this.id);
       console.log(this.id);
     });
+  }
+
+  showProduct(id: number) {
+    this.route.navigate(['/dashboard/show-produit', id]);
   }
 
   listeProdPerFournisseur(id) {

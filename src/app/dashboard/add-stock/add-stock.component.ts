@@ -11,30 +11,38 @@ import Swal from 'sweetalert2';
   styleUrls: ['./add-stock.component.scss']
 })
 export class AddStockComponent implements OnInit {
-  stock : Stock = new Stock();
+  stock: Stock = new Stock();
   products;
-  fournisseurs
-  constructor(private stockService: StockService,private fournisseurService: FournisseurService, private route: Router, private productService: ProductService) { }
+  fournisseurs;
+  idfourSelected;
+  fournisseursName;
+  constructor(
+    private stockService: StockService,
+    private fournisseurService: FournisseurService,
+    private route: Router,
+    private productService: ProductService
+  ) {}
 
   ngOnInit(): void {
+    this.fournisseurService.getListfournisseur().subscribe(data => {
+      this.fournisseurs = data;
+      console.log((this.fournisseurs = data));
+    });
 
- 
-      this.fournisseurService.getListfournisseur().subscribe(data => {
-        this.fournisseurs = data;
-        console.log((this.fournisseurs = data));
-      });
-    
-
-
-    this.productService.getListProduct().subscribe(
-      (data)=> {
-        this.products=data;
-      console.log(this.products=data)
-    } 
-    ) ;
+    this.productService.getListProduct().subscribe(data => {
+      this.products = data;
+      console.log((this.products = data));
+    });
   }
-  onSubmit(){
-    console.log(this.stock);
+
+  selectOption(id: any) {
+    //getted from event
+    this.idfourSelected = id;
+    console.log(id);
+
+    //getted from binding
+  }
+  onSubmit() {
     this.saveStock();
     Swal.fire({
       position: 'top-end',
@@ -42,20 +50,25 @@ export class AddStockComponent implements OnInit {
       title: 'Your insertion has been saved',
       showConfirmButton: false,
       timer: 1500
-    })
+    });
     this.goToStockList();
   }
 
-  saveStock(){
+  saveStock() {
+    console.log(this.idfourSelected);
+    this.fournisseurService.getfournisseurById(this.idfourSelected).subscribe(data => {
+      this.stock.fournisseursName = data.libelle;
+      this.stock.fournisseur = data;
 
-    this.stockService.addStock(this.stock).subscribe( data => 
-      {console.log(data);},
-     error => console.error());
-       
+      this.stockService.addStock(this.stock).subscribe(
+        data => {
+          console.log(data);
+        },
+        error => console.error()
+      );
+    });
   }
-  goToStockList(){
+  goToStockList() {
     this.route.navigate(['/dashboard/list-stock']);
-  
-
-}
+  }
 }

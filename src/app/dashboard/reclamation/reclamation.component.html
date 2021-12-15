@@ -4,7 +4,7 @@
       <div class="flex flex-wrap justify-between">
         <h1 class="text-2xl text-orange-500 hover:text-orange-500 transition duration-500 p-4">
           <i class="fas fa-sign-in-alt fa-fw fa-lg"></i>
-          Réclamation
+          Claim
         </h1>
         <a href="#home" class="mt-8 text-orange-400 hover:text-orange-600 transition duration-500">
           <svg
@@ -184,14 +184,14 @@
               h-10
             "
           >
-            Envoyer
+            Send
           </button>
           <div
             class="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative"
             *ngIf="alert"
             role="alert"
           >
-            Votre Réclamation est prise en considération ,un employé vous communique trés bientot
+            Your Claim is taken into consideration ,an employee informs you soon
           </div>
         </form>
       </div>
@@ -199,7 +199,7 @@
   </div>
 </div>
 
-<h3 *ngIf="reclamationPerclientResponded.length > 0">Vos Réclamations Répondu</h3>
+<h3 *ngIf="reclamationPerclientResponded.length > 0">Your Complaints Answered</h3>
 <div class="flex justify-center items-center">
   <div
     class="
@@ -220,10 +220,8 @@
   >
     <div class="flex flex-col sm:flex-row justify-start items-center gap-4">
       <div class="text-center sm:text-left">
-        <h1 class="text-gray-700" style="font-size: 15px">
-          Réclamation Faite le :{{ item.date | date: 'dd/MM/yyyy' }}
-        </h1>
-        <p class="text-gray-500 font-semibold">Réponse: {{ item.reponse }}</p>
+        <h1 class="text-gray-700" style="font-size: 15px">Claim Made on :{{ item.date | date: 'dd/MM/yyyy' }}</h1>
+        <p class="text-gray-500 font-semibold">Response: {{ item.reponse }}</p>
       </div>
     </div>
   </div>
