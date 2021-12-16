@@ -164,6 +164,9 @@
           </div>
         </div>
 
+
+
+        
         <div class="flex items-center p-4 border-b hover:bg-blue-100" *ngFor="let product of products | paginate:{itemsPerPage:5,currentPage: p}">
           <div class="w-2/12">
             <!--p>this.ProductService.url+'Imgproduits/'+product.idproduit </p-->
@@ -243,45 +246,6 @@
 
               <!--mat-paginator [pageSizeOption]="[5,10,20]"> showFirstLastButtons</mat-paginator-->
 
-              <div class="grid grid-cols-2 gap-8 lg:gap-5" *ngIf="view === 'grid'">
-                <div class="grid grid-cols-3 gap-4 lg:gap-8" *ngFor="let detailProduct of detailProducts | slice: 0:9">
-                  <div class="col-span-6 md:col-span-4 border rounded px-4 lg:px-8 py-8 lg:py-16">
-                    <mat-icon class="text-accent mb-5">Category</mat-icon><mat-icon class="text-accent mb-5">A</mat-icon><mat-icon class="text-accent mb-5">T</mat-icon><mat-icon class="text-accent mb-5">E</mat-icon><mat-icon class="text-accent mb-5">G</mat-icon><mat-icon class="text-accent mb-5">O</mat-icon><mat-icon class="text-accent mb-5">R</mat-icon> <mat-icon class="text-accent mb-5">Y</mat-icon>
-                    <div  [ngClass]="{
-            'bg-red-500 text-red-500': detailProduct.categorieProduit === 'Electromeanger',
-            'bg-primary text-primary': detailProduct.categorieProduit === 'Alimentaire',
-            'bg-blue-500 text-yellow-500': detailProduct.categorieProduit === 'Quincaillerie'
-
-
-
-
-            }"
-                          class=" w-3/12 font-medium text-[12px] bg-opacity-20 rounded-full px-3 inline-block font-bold py-[3px]"
-                    >
-                      <h6>{{detailProduct.categorieProduit}}</h6> </div>
-                    <h6> created on : </h6><h7>{{detailProduct.dateCreation | date:'fullDate' }} </h7> <strong>  At :</strong> <h7> {{detailProduct.dateCreation | date:'h:mm a z'}}  </h7>
-                    <br>
-                    <h6> updated on : </h6><h7>{{detailProduct.dateDerniereModification | date:'fullDate' }} </h7> <strong>  At :</strong> <h7> {{detailProduct.dateDerniereModification | date:'h:mm a z'}}  </h7>
-
-                    <br>
-                    <br>
-
-
-
-                    <button class="font-semibold" mat-flat-button color="warn" (click)="updateDetailProduct(detailProduct.idDetailProduit)" >
-                      <mat-icon>update</mat-icon>
-                      <span>Update</span>
-                    </button>
-                    <button class="font-semibold" mat-flat-button  (click)="deleteDetailProduct(detailProduct.idDetailProduit)" >
-                      <mat-icon>delete</mat-icon>
-                      <span>Delete</span>
-                    </button>
-                  </div>
-
-
-                </div>
-
-              </div>
 
             </mat-menu>
           </div>
@@ -291,6 +255,46 @@
       </div>
       <pagination-controls (pageChange)="p = $event"></pagination-controls>
 
+
+    </div>
+   
+    <div class="grid grid-cols-2 gap-8 lg:gap-5" *ngIf="view === 'grid'">
+      <div class="grid grid-cols-3 gap-4 lg:gap-8" *ngFor="let detailProduct of detailProducts | slice: 0:9">
+        <div class="col-span-6 md:col-span-4 border rounded px-4 lg:px-8 py-8 lg:py-16">
+          <mat-icon class="text-accent mb-5">Category</mat-icon><mat-icon class="text-accent mb-5">A</mat-icon><mat-icon class="text-accent mb-5">T</mat-icon><mat-icon class="text-accent mb-5">E</mat-icon><mat-icon class="text-accent mb-5">G</mat-icon><mat-icon class="text-accent mb-5">O</mat-icon><mat-icon class="text-accent mb-5">R</mat-icon> <mat-icon class="text-accent mb-5">Y</mat-icon>
+          <div  [ngClass]="{
+            'bg-red-500 text-red-500': detailProduct.categorieProduit === 'Electromeanger',
+            'bg-primary text-primary': detailProduct.categorieProduit === 'Alimentaire',
+            'bg-blue-500 text-yellow-500': detailProduct.categorieProduit === 'Quincaillerie'
+
+            
+           
+            
+            }" 
+            class=" w-3/12 font-medium text-[12px] bg-opacity-20 rounded-full px-3 inline-block font-bold py-[3px]"
+          >
+          <h6>{{detailProduct.categorieProduit}}</h6> </div>
+          <h6> created on : </h6><h7>{{detailProduct.dateCreation | date:'fullDate' }} </h7> <strong>  At :</strong> <h7> {{detailProduct.dateCreation | date:'h:mm a z'}}  </h7>
+          <br>
+          <h6> updated on : </h6><h7>{{detailProduct.dateDerniereModification | date:'fullDate' }} </h7> <strong>  At :</strong> <h7> {{detailProduct.dateDerniereModification | date:'h:mm a z'}}  </h7>
+
+          <br>
+          <br>
+         
+          
+        
+          <button class="font-semibold" mat-flat-button color="warn" (click)="updateDetailProduct(detailProduct.idDetailProduit)" >
+            <mat-icon>update</mat-icon>
+            <span>Update</span>
+          </button>
+          <button class="font-semibold" mat-flat-button  (click)="deleteDetailProduct(detailProduct.idDetailProduit)" >
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+        </div>
+        
+        
+      </div>
     </div>
   </div>
 </div>
