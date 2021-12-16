@@ -5,7 +5,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { HttpClient } from '@angular/common/http';
 import { NgChartsModule } from 'ng2-charts';
+import { CommonModule, DatePipe } from '@angular/common';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -18,8 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, SharedModule, NgxSkeletonLoaderModule, NgChartsModule,
     ReactiveFormsModule,
     FormsModule,
-    NgChartsModule, MatPaginatorModule],
-  providers: [],
+    NgChartsModule, MatPaginatorModule, CommonModule],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,12 +1,14 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/model/product';
 import { Review } from 'src/app/model/review';
 import { User } from 'src/app/model/user';
 import { ReviewService } from 'src/app/services/review.service';
 
 export interface DialogData {
+  product: Product;
   stars: number;
   rating: number;
   tempRating: number;
@@ -28,7 +30,7 @@ export class ReviewComponent implements OnInit {
     private service: ReviewService,
     private activatedRoute: ActivatedRoute
   ) {}
-
+  @Input() product: Product;
   userRole: string = localStorage.getItem('loggedUserAccountCategory');
   reviews: Review[] = [];
   review: Review;
@@ -36,6 +38,7 @@ export class ReviewComponent implements OnInit {
   rating: number;
   stars: number[] = [5, 4, 3, 2, 1];
   rateDescriptions: string;
+  userId  = localStorage.getItem('loggedUserId')
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -75,14 +78,16 @@ export class ReviewComponent implements OnInit {
       if (result) {
         this.service.delete(id).subscribe(() => {
           this.reviews = this.reviews.filter(item => item.id != id);
+          let x = 0;
+          this.reviews.map(review => {
+            x += review.rating;
+          });
+          this.rating = x / this.reviews.length;
+          this.tempRating = this.rating;
+          this.rateDescriptions = this.starsDescriptions[this.tempRating - 1];
+          this.review = null;
         });
-        let x = 0;
-        this.reviews.map(review => {
-          x += review.rating;
-        });
-        this.rating = x / this.reviews.length;
-        this.tempRating = this.rating;
-        this.rateDescriptions = this.starsDescriptions[this.tempRating - 1];
+
         this._snackBar.open('Review deleted successfully!!', 'Great!', {
           horizontalPosition: 'center',
           verticalPosition: 'top'
@@ -100,6 +105,7 @@ export class ReviewComponent implements OnInit {
   openDialog(rating) {
     const dialogRef = this.dialog.open(AddReviewDialog, {
       data: {
+        product: this.product,
         stars: this.stars,
         rating,
         tempRating: rating,
@@ -123,7 +129,15 @@ export class ReviewComponent implements OnInit {
               this.reviews[i].description = review.description;
             }
           });
+
           this.review = item;
+          let x = 0;
+          this.reviews.map(review => {
+            x += review.rating;
+          });
+          this.rating = x / this.reviews.length;
+          this.tempRating = this.rating;
+          this.rateDescriptions = this.starsDescriptions[this.tempRating - 1];
         });
         this._snackBar.open('Review added successfully!!', 'Great!', {
           horizontalPosition: 'center',
@@ -133,12 +147,26 @@ export class ReviewComponent implements OnInit {
         this.service.addNewReview(review).subscribe((item: Review) => {
           this.reviews.push(item);
           this.review = item;
+          let x = 0;
+          this.reviews.map(review => {
+            x += review.rating;
+          });
+          this.rating = x / this.reviews.length;
+          this.tempRating = this.rating;
+          this.rateDescriptions = this.starsDescriptions[this.tempRating - 1];
         });
         this._snackBar.open('Review updated successfully!!', 'Great!', {
           horizontalPosition: 'center',
           verticalPosition: 'top'
         });
       }
+      let x = 0;
+      this.reviews.map(review => {
+        x += review.rating;
+      });
+      this.rating = x / this.reviews.length;
+      this.tempRating = this.rating;
+      this.rateDescriptions = this.starsDescriptions[this.tempRating - 1];
     });
   }
 }
@@ -154,6 +182,7 @@ export class AddReviewDialog {
   onCancelClick(): void {
     this.dialogRef.close();
   }
+  product: Product = this.data.product;
   comment: string = this.data.review?.description;
   showError: boolean;
   tempRating: number = this.data.rating;

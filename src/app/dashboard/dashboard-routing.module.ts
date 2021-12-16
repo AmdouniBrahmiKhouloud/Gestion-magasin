@@ -22,6 +22,7 @@ import { DashboardStatsFournisseursComponent } from './dashboard-stats-fournisse
 import { ListeReclamationComponent } from './liste-reclamation/liste-reclamation.component';
 import { ReclamationComponent } from './reclamation/reclamation.component';
 import { DashboardUpdateUserComponent } from './dashboard-update-user/dashboard-update-user.component';
+import {StatPromotionComponent} from './stat-promotion/stat-promotion.component';
 
 const DashboardChildrenRoute: Routes = [
   {
@@ -72,6 +73,9 @@ const DashboardChildrenRoute: Routes = [
   {
     path: 'profile',
     component: DashboardProfileComponent
+  },  {
+    path: 'stat',
+    component: StatPromotionComponent
   },
   {
     path: 'orders',

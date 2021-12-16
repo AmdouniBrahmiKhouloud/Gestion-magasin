@@ -1,4 +1,3 @@
-import { Component, OnInit } from '@angular/core';
 import { NotificationsService } from 'angular2-notifications';
 import { Product } from 'src/app/model/product';
 import { DetailProductService } from 'src/app/services/detailProduit.service';
@@ -6,6 +5,12 @@ import { ProductService } from 'src/app/services/product.service';
 import { productsDB } from '../../shared/data/products';
 import {FactureService} from '../../services/facture.service';
 import {Router} from '@angular/router';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { PromotionService } from '../../services/promotion.service';
+import { Promotion } from '../../model/promotion';
+import { ActivatedRoute } from '@angular/router';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 @Component({
   selector: 'll-product-list',
@@ -19,11 +24,16 @@ export class ProductListComponent implements OnInit {
  advanceSearchExpanded: boolean = false;
  //products : Product[];
  view = 'list';
- products;
+ products = [];
+  list: Promotion[];
  definedUrl = this.productService.url+'Imgproduits/';
+  listWithPromtion = [];
+ newprise: number ;
 
 
-  constructor(private productService : ProductService, private route : Router) {}
+ @ViewChild('pdfTable', {static: false}) pdfTable: ElementRef;
+ searchText: string ;
+  constructor(private productService : ProductService, private route: Router , private promotionService: PromotionService ) {}
 
  /* ngOnInit(): void {
     setTimeout(() => {
@@ -32,18 +42,45 @@ export class ProductListComponent implements OnInit {
     }, 8000)
   }*/
   ngOnInit(): void{
-    /*this.productService.getListProduct().subscribe( (data : Product[]) => { console.log(data)
-    this.products = data;});*/
-    this.products = productsDB.Product;
-    this.productService.getListProduct().subscribe(
-      (data)=> {
-        this.products=data;
-      console.log(this.products=data)
-      }
-    )
+
+    this.promotionService.getListPromotion().subscribe((data: Promotion[]) => {
+      this.list = data ;
+      console.log(this.list);
+      this.productService.getListProduct().subscribe(
+        (d) => {
+          const l: any = d ;
+          console.log(l) ;
+          for (let i = 0 ; i < l.length ; i++)
+          {
+            let found = false ;
+            for (let j = 0 ; j < this.list.length ; j++)
+            {
+              const prom: any = this.list[j].produit ;
+              console.log(l[i].idproduit);
+              if (l[i].idproduit === prom.idproduit){
+                this.listWithPromtion.push(this.list[j]) ;
+                console.log(this.list[j]);
+                found = true ;
+                break ;
+              }
+            }
+            if (!found)
+            {
+              this.products.push(l[i]) ;
+            }
+          }
 
 
-  }
+
+
+          console.log(this.listWithPromtion) ;
+          console.log(this.products) ;
+
+        });
+    }); }
+
+
+
   showProduct(id:number){
     this.route.navigate(['/products/detail-produit',id]);
   }
@@ -117,6 +154,29 @@ export class ProductListComponent implements OnInit {
   }
 
 
+
+  exportPdf(): void {
+
+    const doc = new jsPDF();
+
+    const columns = [['name', 'description', 'pourcentage' , 'dateBegin' , 'endate' , 'Product']];
+    const data = [] ;
+    this.listWithPromtion.forEach((item) => {
+       data.push([item.name, item.description, item.pourcentage, item.dateBegin , item.endate , item.produit.libelle ]) ;
+    }) ;
+
+
+
+    autoTable(doc, {
+      head: columns,
+      body: data,
+      didDrawPage: (dataArg) => {
+        doc.text('list Promotion', dataArg.settings.margin.left, 12);
+      }
+    });
+
+    doc.save('Promotions.pdf') ;
+  }
 
 
 }

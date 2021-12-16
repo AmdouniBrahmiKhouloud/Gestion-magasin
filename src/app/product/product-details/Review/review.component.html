@@ -59,7 +59,7 @@
       <div>
         <button
           class="mr-4"
-          *ngIf="userRole === 'admin'"
+          *ngIf="userRole === 'admin' || product.client.id == userId"
           mat-icon-button
           (click)="openConfirmationDialog(review.id)"
           color="accent"

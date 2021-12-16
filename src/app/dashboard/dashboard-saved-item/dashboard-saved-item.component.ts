@@ -6,6 +6,10 @@ import { productsDB } from 'src/app/shared/data/products';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { NotificationsService } from 'angular2-notifications';
 import Swal from 'sweetalert2';
+import { Product } from '../../model/product';
+import { PromotionService } from '../../services/promotion.service';
+import { Promotion } from '../../model/promotion';
+
 @Component({
   selector: 'll-dashboard-saved-item',
   templateUrl: './dashboard-saved-item.component.html',
@@ -16,30 +20,93 @@ export class DashboardSavedItemComponent implements OnInit {
   view = 'list';
   @ViewChild(MatPaginator) paginator: MatPaginator;
   //dataSource = new MatTableDataSource(ELEMENT_DATA);
-  products;
+  products = [];
   postPerPage
   pageNumber
   detailProducts;
-  constructor(public productService:ProductService , private route : Router , private detailProductService : DetailProductService
+  listWithPromtion = [] ;
+  list: Promotion[];
+  found = false ;
+  indexs = [] ;
+  constructor(private productService: ProductService, private promotionSerice: PromotionService, private route : Router , private detailProductService : DetailProductService
     ) {}
-  
+
   definedUrl = this.productService.url+'Imgproduits/';
- 
+
   ngOnInit(): void {
     //this.products.paginator = this.paginator;
+    /*
     this.products = productsDB.Product;
     this.productService.getListProduct().subscribe(
       (data)=> {
         this.products=data;
       console.log(this.products=data)
       }
-    ) ;
+    ) ;*/
    this.detailProductService.getListDetailProducts().subscribe(
       (data)=> {
         this.detailProducts=data;
       console.log(this.detailProducts=data)
       }
     ) ;
+
+    this.promotionSerice.getListPromotion().subscribe((data: Promotion[]) => {
+      this.list = data ;
+      console.log(this.list);
+    this.productService.getListProduct().subscribe(
+        (d) => {
+          const l: any = d ;
+          console.log(l) ;
+          for (let i = 0 ; i < l.length ; i++)
+          {
+            let found = false ;
+            for (let j = 0 ; j < this.list.length ; j++)
+            {
+              const prom: any = this.list[j].produit ;
+              console.log(l[i].idproduit);
+              if (l[i].idproduit === prom.idproduit){
+                this.listWithPromtion.push(this.list[j]) ;
+                console.log(this.list[j]);
+                found = true ;
+                break ;
+              }
+            }
+            if (!found)
+            {
+              this.products.push(l[i]) ;
+            }
+          }
+
+
+
+
+          console.log(this.listWithPromtion) ;
+          console.log(this.products) ;
+
+        });
+  }); }
+
+
+  Add(id: number): void {
+    console.log(id);
+    this.route.navigate(['/products/form/' + id ]);
+
+  }
+
+  delete(p: Promotion): void {
+
+    console.log(p) ;
+    const i = this.list.indexOf(p);
+
+    this.promotionSerice.deletePromotion(p.id).subscribe(() =>  {
+      this.listWithPromtion.splice(i, 1 ) ;
+      this.products.push(p.produit);
+    }  );
+  }
+
+  update(id: number): void {
+    console.log(id);
+    this.route.navigate(['/products/formUpdate/' + id ]);
   }
   private getProducts()
   {
@@ -73,7 +140,7 @@ export class DashboardSavedItemComponent implements OnInit {
         )
       }
     })
-   
+
   }
   private getDetailProducts()
   {
@@ -83,7 +150,7 @@ export class DashboardSavedItemComponent implements OnInit {
   }
   updateDetailProduct(id:number){
     this.route.navigate(['/dashboard/update-detail-produit',id]);
-   
+
     }
     showProduct(id:number){
       this.route.navigate(['/dashboard/show-produit',id]);
@@ -111,9 +178,9 @@ export class DashboardSavedItemComponent implements OnInit {
         }
       })
 
-     
-    }
-   
 
-    
+    }
+
+
+
 }

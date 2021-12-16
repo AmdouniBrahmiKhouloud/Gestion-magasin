@@ -51,6 +51,8 @@ import { DashboardProduitParFournisseurComponent } from './dashboard-produit-par
 import { DashboardStatsFournisseursComponent } from './dashboard-stats-fournisseurs/dashboard-stats-fournisseurs.component';
 import { ListeReclamationComponent } from './liste-reclamation/liste-reclamation.component';
 import { DashboardUpdateUserComponent } from './dashboard-update-user/dashboard-update-user.component';
+import { ProductModule } from '../product/product.module';
+import { StatPromotionComponent } from './stat-promotion/stat-promotion.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +80,7 @@ import { DashboardUpdateUserComponent } from './dashboard-update-user/dashboard-
     DashboardStatsFournisseursComponent,
     ListeReclamationComponent,
     DashboardUpdateUserComponent,
+    StatPromotionComponent,
   ],
   imports: [
     MatSnackBarModule,
@@ -102,7 +105,8 @@ import { DashboardUpdateUserComponent } from './dashboard-update-user/dashboard-
     ReactiveFormsModule,
     MatDialogModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    CommonModule, DashboardRoutingModule, SharedModule, MatMenuModule, ProductModule
   ],
   exports: [
     CommonModule,
@@ -115,7 +119,7 @@ import { DashboardUpdateUserComponent } from './dashboard-update-user/dashboard-
     MatFormFieldModule,
     MatDialogModule,
     MatInputModule
-  ]
+  ],
 })
 // NgChartsModule,Chart
 export class DashboardModule {}
